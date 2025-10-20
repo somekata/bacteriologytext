@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>細菌学各論オーバービュー</title>
+    <style>
+      :root {
+        --accent: #087f5b;
+        --text: #222;
+        --muted: #666;
+        --bg: #f8fafc;
+        --card: #fff;
+        --radius: 14px;
+        --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      }
+      body {
+        margin: 0;
+        font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+      }
+      header {
+        background: linear-gradient(135deg, #e9fff5, #f4fbff);
+        padding: 32px 20px;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0;
+        font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+      }
+      header p {
+        color: var(--muted);
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 30px 20px 80px;
+      }
+      section {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 24px;
+        margin: 20px 0;
+      }
+      h2 {
+        border-left: 6px solid var(--accent);
+        padding-left: 12px;
+        margin-top: 0;
+      }
+      h3 {
+        color: var(--accent);
+        margin-top: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 0.93rem;
+        table-layout: fixed;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px 10px;
+        vertical-align: top;
+      }
+      th {
+        background: #f0f7f5;
+        text-align: center;
+        width: 22%;
+      }
+      td {
+        background: #fff;
+        width: 39%;
+      }
+      ul {
+        margin: 6px 0 0 1em;
+        padding: 0;
+      }
+      li {
+        margin: 3px 0;
+      }
+      em {
+        font-style: italic;
+      }
+      footer {
+        text-align: center;
+        color: #999;
+        font-size: 0.85rem;
+        margin-top: 40px;
+      }
+      ol {
+        padding-left: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>細菌学各論オーバービュー</h1>
+      <p>大阪公立大学大学院 医学研究科・細菌学</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>1. 細菌学各論を始める前に</h2>
+        <p>
+          　臨床的に問題となりうる細菌は優に100種類を超えるが、その中でも主要な細菌、
+          すなわち「進級する前に最低限覚えておくべき細菌」を以下に示す。
+        </p>
+        <h2>2. グラム染色とは</h2>
+        <p>
+          　細菌を大きく2つに分類する方法で、細菌の細胞壁の構造的違いを反映している。
+          グラム陽性菌は厚いペプチドグリカン層を持ち、青（紫）色に染まる。一方、グラム陰性菌は薄いペプチドグリカン層と外膜を持ち、赤色に染まる。臨床現場では、グラム染色の結果は迅速な診断と治療方針の決定に役立つ。
+        </p>
+
+        <h3>1）グラム染色で通常判別する代表的な菌（表1）</h3>
+        <h3>表1　グラム染色で判別できる主要な細菌</h3>
+        <table>
+          <tr>
+            <th></th>
+            <th>グラム陽性菌</th>
+            <th>グラム陰性菌</th>
+          </tr>
+          <tr>
+            <th>球菌</th>
+            <td>
+              <ul>
+                <li><em>Streptococcus pneumoniae</em>（肺炎球菌）</li>
+                <li><em>Streptococcus pyogenes</em>（A群溶連菌）</li>
+                <li><em>Streptococcus agalactiae</em>（B群溶連菌）</li>
+                <li><em>Enterococcus faecium</em>（腸球菌）</li>
+                <li><em>Staphylococcus aureus</em>（黄色ブドウ球菌）</li>
+                <li><em>Staphylococcus epidermidis</em>（表皮ブドウ球菌）</li>
+                <li><em>Peptococcus</em> spp.（嫌気性）</li>
+                <li><em>Peptostreptococcus</em> spp.（嫌気性）</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li><em>Moraxella catarrhalis</em></li>
+                <li><em>Neisseria meningitidis</em>（髄膜炎菌）</li>
+                <li><em>Neisseria gonorrhoeae</em>（淋菌）</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>桿菌</th>
+            <td>
+              <ul>
+                <li>
+                  <strong>嫌気性・芽胞形成：</strong>
+                  <em>Clostridium perfringens</em>／<em
+                    >Clostridioides difficile</em
+                  >／<em>Clostridium botulinum</em>／<em>Clostridium tetani</em>
+                </li>
+                <li>
+                  <strong>好気性・芽胞形成：</strong>
+                  <em>Bacillus cereus</em>／<em>Bacillus anthracis</em>
+                </li>
+                <li><em>Corynebacterium diphtheriae</em></li>
+                <li><em>Listeria monocytogenes</em></li>
+                <li><em>Actinomyces</em> spp.（嫌気性）</li>
+                <li>
+                  <em>Nocardia</em> spp.／<em>Streptomyces</em> spp.（放線菌）
+                </li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li><em>Haemophilus influenzae</em>／<em>H. ducreyi</em></li>
+                <li><em>Pasteurella multocida</em></li>
+                <li><em>Bordetella pertussis</em></li>
+                <li>
+                  <em>Brucella melitensis</em>／<em>Francisella tularensis</em>
+                </li>
+                <li><em>Bartonella henselae</em></li>
+                <li>
+                  <em>Escherichia coli</em>／<em>Klebsiella pneumoniae</em>／<em
+                    >Salmonella Typhi</em
+                  >／<em>Salmonella Paratyphi</em>／<em
+                    >Shigella dysenteriae</em
+                  >
+                </li>
+                <li><em>Yersinia pestis</em>／<em>Y. enterocolitica</em></li>
+                <li><em>Vibrio cholerae</em>／<em>V. parahaemolyticus</em></li>
+                <li>
+                  <em>Pseudomonas aeruginosa</em>／<em
+                    >Acinetobacter baumannii</em
+                  >
+                </li>
+                <li><em>Bacteroides fragilis</em>（嫌気性）</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>2）グラム染色では通常判別しない細菌のうち代表的な菌</h3>
+
+        <h3>抗酸菌</h3>
+        <ul>
+          <li><em>Mycobacterium tuberculosis</em></li>
+          <li>
+            <em>Mycobacterium avium</em>,
+            <em>M. intracellulare</em>（総称してMAC）
+          </li>
+          <li><em>Mycobacterium leprae</em></li>
+        </ul>
+
+        <h3>らせん菌（スピリルム）</h3>
+        <ul>
+          <li><em>Campylobacter jejuni/coli</em></li>
+          <li><em>Helicobacter pylori</em></li>
+        </ul>
+
+        <h3>スピロヘータ</h3>
+        <ul>
+          <li><em>Treponema pallidum</em></li>
+          <li><em>Borrelia recurrentis</em>, <em>B. burgdorferi</em></li>
+          <li><em>Leptospira interrogans</em></li>
+        </ul>
+
+        <h3>非定型菌</h3>
+        <ul>
+          <li><em>Mycoplasma pneumoniae</em></li>
+          <li><em>Legionella pneumophila</em></li>
+          <li><em>Chlamydia pneumoniae</em>*</li>
+          <li><em>Chlamydia psittaci</em>*</li>
+          <li><em>Chlamydia trachomatis</em></li>
+          <li>
+            <em>Rickettsia japonica</em>, <em>R. rickettsii</em>,
+            <em>R. prowazekii</em>
+          </li>
+          <li><em>Orientia tsutsugamushi</em></li>
+          <li><em>Coxiella burnetii</em></li>
+        </ul>
+
+        <h3>真菌</h3>
+        <ul>
+          <h3>酵母様真菌</h3>
+          <li><em>Candida albicans</em></li>
+          <li><em>Cryptococcus neoformans</em></li>
+          <li><em>Trichosporon asahii</em></li>
+          <h3>糸状菌</h3>
+          <li><em>Aspergillus fumigatus</em></li>
+          <li><em>Rhizopus oryzae</em></li>
+          <h3>二形性真菌</h3>
+          <li><em>Coccidioides immitis</em></li>
+          <li><em>Histoplasma capsulatum</em></li>
+          <li><em>Paracoccidioides brasiliensis</em></li>
+          <li><em>Blastomyces dermatitidis</em></li>
+          <li><em>Penicillium（Talaromyces）marneffei</em></li>
+          <h3>特殊な真菌</h3>
+          <li><em>Pneumocystis jirovecii</em></li>
+        </ul>
+
+        <p class="hint">
+          *近年、<em>Chlamydophila</em>から<em>Chlamydia</em>に再修正された。
+        </p>
+      </section>
+
+      <section>
+        <h2>和名がついている主要な細菌（重要）</h2>
+        <p>
+          　以下の細菌は和名がついており、国家試験でも頻出である。上記の学名と対応できるようにしておく。
+        </p>
+        <ol>
+          <li>肺炎球菌</li>
+          <li>A群溶連菌</li>
+          <li>B群溶連菌</li>
+          <li>腸球菌</li>
+          <li>黄色ブドウ球菌</li>
+          <li>表皮ブドウ球菌</li>
+          <li>髄膜炎菌</li>
+          <li>淋菌</li>
+          <li>ウェルシュ菌</li>
+          <li>ディフィシル菌</li>
+          <li>ボツリヌス菌</li>
+          <li>破傷風菌</li>
+          <li>セレウス菌</li>
+          <li>炭疽菌</li>
+          <li>ジフテリア菌</li>
+          <li>インフルエンザ菌</li>
+          <li>軟性下疳菌</li>
+          <li>百日咳菌</li>
+          <li>野兎病菌</li>
+          <li>大腸菌</li>
+          <li>肺炎桿菌</li>
+          <li>チフス菌</li>
+          <li>パラチフス菌</li>
+          <li>赤痢菌</li>
+          <li>ペスト菌</li>
+          <li>コレラ菌</li>
+          <li>緑膿菌</li>
+          <li>結核菌</li>
+          <li>肺炎マイコプラズマ</li>
+        </ol>
+      </section>
+
+      <footer>
+        <p>© 2025 Osaka Metropolitan University — Department of Bacteriology</p>
+        <p>ChatGPT5を用いて作成しています。</p>
+      </footer>
+    </main>
+  </body>
+</html>

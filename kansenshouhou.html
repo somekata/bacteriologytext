@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>感染症法オーバービュー（類型・届出・特定病原体）</title>
+    <style>
+      :root {
+        --accent: #0b7;
+        --ink: #222;
+        --muted: #666;
+        --bg: #f7f9fb;
+        --card: #fff;
+        --radius: 14px;
+        --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto,
+          "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+        line-height: 1.75;
+      }
+      header {
+        background: linear-gradient(135deg, #eafff4, #f4fbff);
+        padding: 28px 20px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      }
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 20px 60px;
+      }
+      section {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px;
+        margin: 18px 0;
+      }
+      h2 {
+        border-left: 6px solid var(--accent);
+        padding-left: 12px;
+        margin: 6px 0 12px;
+      }
+      h3 {
+        color: #0a6;
+        margin: 18px 0 6px;
+      }
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+      @media (min-width: 920px) {
+        .grid.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      ul {
+        margin: 8px 0 0 1.2em;
+        padding: 0;
+      }
+      li {
+        margin: 0.25em 0;
+      }
+      .callout {
+        border-left: 4px solid var(--accent);
+        background: #f0fff8;
+        padding: 12px 14px;
+        border-radius: 10px;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.8rem;
+        background: #e8f7f1;
+        color: #0a6;
+        padding: 2px 8px;
+        border-radius: 999px;
+        margin-left: 6px;
+      }
+      .small {
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Consolas, Menlo, monospace;
+      }
+      em {
+        font-style: italic;
+      }
+      footer {
+        color: #8aa;
+        font-size: 0.9rem;
+        margin-top: 26px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>感染症法の概要</h1>
+        <p class="small">
+          　感染症法は、感染症の予防および感染症の患者に対する医療に関する法律である。感染症はその危険度・公衆衛生上の重要性に応じて1類から5類に分類されており、また特定病原体等（1種から4種）に基づく規制も存在する。<br />
+        </p>
+        <p>
+          <a
+            href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/kekkaku-kansenshou11/01.html"
+            target="_blank"
+            >感染症法に基づく医師の届出のお願い</a
+          >
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- 大枠の考え方 -->
+      <section>
+        <h2>大枠の考え方</h2>
+        <div class="callout">
+          <ul>
+            <li>
+              <strong>危険度</strong>は概ね以下の通り<br />
+              感染症：<strong>1類 ＞ 2類 ＞ 3類 ＞ 4類 ＞ 5類</strong
+              >（例外あり）。<br />
+              特定病原体等：<strong>1種 ＞ 2種 ＞ 3種 ＞ 4種</strong>。
+              <br />
+              *参考：BSL（バイオセーフティレベル）は、<strong
+                >4 ＞ 3 ＞ 2 ＞ 1</strong
+              >。
+            </li>
+            <li>
+              <strong>遭遇頻度：</strong>概ね
+              <strong>1類は希少／5類ほど日常的</strong>（例外あり）。
+            </li>
+            <li>
+              <strong>3類：</strong
+              >すべて<strong>細菌性の消化器感染症</strong>（コレラ・赤痢・腸チフス等）。<span
+                class="tag"
+                >消化器</span
+              ><span class="tag">細菌</span>
+            </li>
+            <li>
+              <strong>4類：</strong
+              ><strong>動物由来（ズーノーシス）が多い</strong
+              >。この中に<strong>BSL3</strong>や<strong>特定病原体</strong>に該当するものも含まれる。
+            </li>
+            <li>
+              <strong>5類：</strong
+              ><strong>全数把握</strong>と<strong>定点把握</strong>がある。
+            </li>
+            <li>
+              <strong>届出：</strong
+              ><strong>1〜4類は直ちに届出</strong
+              >。5類のうち<strong>全数把握の一部は直ちに</strong>、その他は<strong>7日以内</strong>、定点は<strong>週/月単位</strong>で報告。
+            </li>
+          </ul>
+          <p class="small">（届出区分の定義は厚労省の案内を参照）</p>
+        </div>
+      </section>
+
+      <!-- 1〜3類：具体リスト（代表病原体・特定病原体の例も） -->
+      <section>
+        <h2>類型別リスト（まずは 1〜3 類）</h2>
+
+        <h3>1類感染症（危険度最高：重篤・致死率高・BSL3/4相当も）</h3>
+        <ul>
+          <li>
+            エボラ出血熱（病原体：<em>Ebolavirus</em>）…
+            <span class="tag">BSL4</span> <span class="tag">一種病原体等</span>
+          </li>
+          <li>
+            クリミア・コンゴ出血熱（<em
+              >Crimean–Congo hemorrhagic fever virus</em
+            >）… <span class="tag">BSL4</span>
+            <span class="tag">一種病原体等</span>
+          </li>
+          <li>
+            痘そう（病原体：<em>Variola virus</em>）…
+            <span class="tag">BSL4</span> <span class="tag">一種病原体等</span>
+          </li>
+          <li>
+            南米出血熱（例：<em>Junin</em>, <em>Machupo</em> など）…
+            <span class="tag">BSL4</span> <span class="tag">一種病原体等</span>
+          </li>
+          <li>
+            ペスト（病原体：<em>Yersinia pestis</em>）…
+            <span class="tag">BSL3</span> <span class="tag">一種病原体等</span>
+          </li>
+          <li>
+            マールブルグ病（<em>Marburg virus</em>）…
+            <span class="tag">BSL4</span> <span class="tag">一種病原体等</span>
+          </li>
+          <li>
+            ラッサ熱（<em>Lassa virus</em>）… <span class="tag">BSL4</span>
+            <span class="tag">一種病原体等</span>
+          </li>
+        </ul>
+        <p class="small">
+          根拠：厚労省「類型別一覧」「届出のお願い」、自治体の公表資料。1類の疾病群・届出は「直ちに」。
+        </p>
+
+        <h3>2類感染症（重篤性・感染力が高く、公衆衛生上の即応が必要）</h3>
+        <ul>
+          <li>急性灰白髄炎（ポリオ）</li>
+          <li>
+            結核（病原体：<em>Mycobacterium tuberculosis</em>）…
+            <span class="tag">BSL3相当の管理区域で取り扱い</span>
+            <span class="tag">耐性度により三種・四種・非該当</span>
+          </li>
+          <li>ジフテリア（病原体：<em>Corynebacterium diphtheriae</em>）</li>
+          <li>重症急性呼吸器症候群（SARSコロナウイルスに限る）</li>
+          <li>中東呼吸器症候群（MERS）</li>
+          <li>鳥インフルエンザ（H5N1/H7N9 など高病原性）</li>
+        </ul>
+        <p class="small">
+          2類も届出は「直ちに」。SARS-CoV（SARS）等はBSL3・特定病原体の規制対象に関連（病原体対照表・規制ページ参照）。
+        </p>
+
+        <h3>
+          3類感染症（すべて細菌性の消化器感染症。食品関連・職業関連クラスターに留意）
+        </h3>
+        <ul>
+          <li>コレラ（<em>Vibrio cholerae</em>）</li>
+          <li>細菌性赤痢（<em>Shigella</em> spp.）</li>
+          <li>腸管出血性大腸菌感染症（例：<em>E. coli</em> O157 等）</li>
+          <li>腸チフス（<em>Salmonella enterica</em> serovar Typhi）</li>
+          <li>パラチフス（<em>S. enterica</em> serovar Paratyphi A）</li>
+        </ul>
+        <p class="small">
+          3類も届出は「直ちに」。全て<strong>細菌</strong>で<strong>消化器系</strong>の感染症。食品取扱業等の就業制限に直結する類型。
+        </p>
+      </section>
+
+      <!-- 4類・5類：今は枠と届出ルールだけ（あとで中身追加） -->
+      <section class="grid two">
+        <div>
+          <h2>4類感染症（動物由来が多い）</h2>
+          <p>
+            動物由来感染症が多く、なかには<strong>BSL3</strong>や<strong>特定病原体</strong>に該当する病原体も含まれる（例：炭疽、ボツリヌス症
+            など）。
+          </p>
+          <p class="small">※ 4類も届出は「直ちに」。</p>
+        </div>
+        <div>
+          <h2>5類感染症（全数把握／定点把握）</h2>
+          <ul>
+            <li>
+              <strong>全数把握：</strong
+              >一部は<strong>直ちに</strong>、その他は<strong>7日以内</strong>の届出。
+            </li>
+            <li>
+              <strong>定点把握：</strong
+              ><strong>週報・月報</strong
+              >単位で報告（小児科・インフルエンザ様等）。
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        <p>© 2025 Osaka Metropolitan University — Department of Bacteriology</p>
+        <p>ChatGPT5を用いて作成しています。</p>
+      </footer>
+    </main>
+  </body>
+</html>
