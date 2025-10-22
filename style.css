@@ -82,7 +82,7 @@ main{
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   padding:24px;
-  text-align:center;
+  text-align:left;
   transition:.3s;
 }
 .card:hover{transform:translateY(-4px);}
