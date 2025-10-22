@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chapter 01：グラム陽性球菌（GPC）— 調べて身につく要点集</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      /* 章ページ用の少しだけの上書き（既存 style.css を基本に） */
+      .chapter-hero {
+        background: linear-gradient(135deg, #eafff4, #f4fbff);
+        padding: 28px 20px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px 72px;
+      }
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+      @media (min-width: 960px) {
+        .grid.two {
+          grid-template-columns: 1fr 1fr;
+        }
+        .grid.three {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      .card.note {
+        border-left: 5px solid var(--accent);
+      }
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: #f1f4f6;
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table th,
+      .table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        vertical-align: top;
+      }
+      .table th {
+        background: #f5fbf8;
+        text-align: center;
+      }
+      em {
+        font-style: italic;
+      }
+      .pill {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: #e8f7f1;
+        color: #087f5b;
+        font-size: 0.85rem;
+        margin-right: 6px;
+      }
+      .badge {
+        display: inline-block;
+        background: #087f5b;
+        color: #fff;
+        border-radius: 8px;
+        padding: 2px 8px;
+        font-size: 0.8rem;
+        margin-left: 6px;
+      }
+      .footnotes {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 20px;
+      }
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="chapter-hero">
+      <h1>Chapter 01：グラム陽性球菌（GPC）</h1>
+      <p class="subtitle">
+        <em>Streptococcus</em> / <em>Enterococcus</em> / <em>Staphylococcus</em>
+        が重要
+      </p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">ポータル</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <!-- 1) 学習目標 -->
+      <section class="card">
+        <h2>学習目標（Learning Objectives）</h2>
+        <ul>
+          <li>グラム陽性球菌（GPC）の分類と主要な菌種を列挙できる。</li>
+          <li>
+            <em>Streptococcus</em
+            >属の形態的特徴、Lancefield分類、主要な菌種と関連疾患を説明できる。
+          </li>
+          <li>
+            <em>Enterococcus</em
+            >属の形態的特徴、主要な菌種と関連疾患を説明できる。
+          </li>
+          <li>
+            <em>Staphylococcus</em
+            >属の形態的特徴、コアグラーゼの意義、主要な菌種と関連疾患を説明できる。
+          </li>
+          <li>
+            代表的なGPCの細菌学的特徴、病原性、感染症、診断法、治療法を説明できる。
+          </li>
+        </ul>
+      </section>
+      <section class="card">
+        <h2>GPCのポイント</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 18%">候補</th>
+              <th>形態・コロニー</th>
+              <th>性状</th>
+              <th>主要な菌種</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong><em>Streptococcus</em></strong>
+              </td>
+              <td>
+                <ul>
+                  <li><span class="kbd">chain（連鎖）</span></li>
+                  <li><span class="kbd">α/β/γ溶血</span></li>
+                </ul>
+              </td>
+              <td>
+                カタラーゼ<strong>陰性</strong><br />
+                Lancefield分類
+              </td>
+              <td>
+                <ul>
+                  <li>
+                    <strong><em>S. pneumoniae</em></strong>
+                  </li>
+                  <li>
+                    <strong><em>S. pyogenes</em></strong>
+                  </li>
+                  <li>
+                    <strong><em>S. agalactiae</em></strong>
+                  </li>
+                  <li><em>S. dysgalactiae</em> supsp. <em>equisimilis</em></li>
+                  <li><em>S. salivarius</em>群</li>
+                  <li><em>S. mitis</em>群</li>
+                  <li><em>S. anginosus</em>群</li>
+                  <li><em>S. mutans</em>群</li>
+                  <li>Viridans <em>Streptococcus</em></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong><em>Enterococcus</em></strong>
+              </td>
+              <td>
+                <ul>
+                  <li><span class="kbd">chain（連鎖）</span></li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>カタラーゼ<strong>陰性</strong></li>
+                  <li>塩/胆汁耐性</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li><em>E. faecium</em></li>
+                  <li><em>E. faecalis</em></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong><em>Staphylococcus</em></strong>
+              </td>
+              <td>
+                <span class="kbd">cluster（ブドウの房状）</span>
+              </td>
+              <td>
+                <ul>
+                  <li>カタラーゼ<strong>陽性</strong></li>
+                  <li><em>S. aureus</em>はコアグラーゼ<strong>陽性</strong></li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>
+                    <strong><em>S. aureus</em></strong>
+                  </li>
+                  <li>
+                    <strong><em>S. epidermidis</em></strong>
+                  </li>
+                  <li><em>S. saprophyticus</em></li>
+                  <li><em>S. intermedius</em></li>
+                  <li><em>S. pseudointermedius</em></li>
+                  <li><em>S. lugdunensis</em></li>
+                  <li><em>S. argenteus</em></li>
+                  <li><em>S. schleiferi</em></li>
+                  <li><em>S. coagulans</em></li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 3) 主要菌のショートノート -->
+      <section class="card">
+        <h2>主要菌のショートノート</h2>
+        <div class="grid three">
+          <div class="card">
+            <h3><em>Streptococcus pneumoniae</em></h3>
+            <p>
+              <span class="pill">α溶血</span><br /><span class="pill">莢膜</span
+              ><br /><span class="pill">尿中抗原</span><br />
+              ワクチン：<span class="pill">PCV</span>・<span class="pill"
+                >PPSV</span
+              >
+              <br />
+              侵襲性肺炎球菌感染症（<span class="pill">IPD</span>）は<strong
+                >5類全数</strong
+              >
+            </p>
+          </div>
+          <div class="card">
+            <h3><em>Streptococcus pyogenes</em></h3>
+            <p>
+              <span class="pill">β溶血</span>
+              <br />
+              A群（group A <em>Streptococcus</em>:
+              <span class="pill">GAS</span>）<br />
+              咽頭炎は5類定点、劇症型は<strong>5類全数</strong>
+              <br>
+              <em>S. dysgalactiae</em> supsp. <em>equisimilis</em>（SDSE）もA群を示すことがある
+            </p>
+          </div>
+          <div class="card">
+            <h3><em>Streptococcus agalactiae</em></h3>
+            <p>
+              <span class="pill">β溶血</span>
+              <br />
+              B群（group B <em>Streptococcus</em>:
+              <span class="pill">GBS</span>）<br />
+              新生児髄膜炎
+            </p>
+          </div>
+          <div class="card">
+            <h3>
+              <em>Enterococcus faecium</em> <br />
+              <em>Enterococcus faecalis</em>
+            </h3>
+            <p>
+              セファロスポリン系薬に自然耐性<br />
+              バンコマイシン耐性腸球菌（<span class="pill">VRE</span
+              >）感染症は<strong>5類全数</strong><br />
+              <em>E. faecium</em>の方が耐性化しやすい（VREが多い）
+            </p>
+          </div>
+          <div class="card">
+            <h3><em>Staphylococcus aureus</em></h3>
+            <p>
+              <span class="pill">コアグラーゼ陽性</span>
+              <br />メチシリン耐性黄色ブドウ球菌（<span class="pill">MRSA</span
+              >）感染症は5類定点 <br />耐性機序：<span class="kbd"
+                ><em>mecA</em> / PBP2’</span
+              >
+              <ul>抗MRSA薬：
+                <li><span class="pill">バンコマイシン</span></li>
+                <li><span class="pill">テイコプラニン</span></li>
+                <li><span class="pill">リネゾリド</span></li>
+                <li><span class="pill">テジゾリド</span></li>
+                <li><span class="pill">ダプトマイシン</span></li>
+                <li><span class="pill">アルベカシン</span></li>
+              </ul>
+            </p>
+          </div>
+          <div class="card">
+            <h3><em>Staphylococcus epidermidis</em></h3>
+            <p>
+              <span class="pill">コアグラーゼ陰性ブドウ球菌（CNS）</span>
+              <br><em>S. aureus</em>よりもやや弱毒。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Osaka Metropolitan University — Department of Bacteriology</p>
+    </footer>
+  </body>
+</html>
