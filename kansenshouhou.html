@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
     <title>感染症法オーバービュー（類型・届出・特定病原体）</title>
     <style>
       :root {
@@ -25,10 +26,6 @@
           "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
         line-height: 1.75;
       }
-      header {
-        background: linear-gradient(135deg, #eafff4, #f4fbff);
-        padding: 28px 20px;
-      }
       h1 {
         margin: 0;
         font-size: clamp(1.6rem, 2.4vw, 2.2rem);
@@ -36,7 +33,6 @@
       .container {
         max-width: 1080px;
         margin: 0 auto;
-        padding: 0 20px 60px;
       }
       section {
         background: var(--card);
@@ -110,16 +106,14 @@
         <p class="small">
           　感染症法は、感染症の予防および感染症の患者に対する医療に関する法律である。感染症はその危険度・公衆衛生上の重要性に応じて1類から5類に分類されており、また特定病原体等（1種から4種）に基づく規制も存在する。<br />
         </p>
-        <p>
-          <a
-            href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/kekkaku-kansenshou11/01.html"
-            target="_blank"
-            >感染症法に基づく医師の届出のお願い</a
-          >
-        </p>
+
       </div>
     </header>
-
+    <nav>
+      <ul>
+        <li><a href="index.html">ポータル</a></li>
+      </ul>
+    </nav>
     <main class="container">
       <!-- 大枠の考え方 -->
       <section>
@@ -163,6 +157,13 @@
             </li>
           </ul>
         </div>
+                <p>
+          <a
+            href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/kekkaku-kansenshou11/01.html"
+            target="_blank"
+            >感染症法に基づく医師の届出のお願い</a
+          >
+        </p>
       </section>
 
       <!-- 1〜3類：具体リスト（代表病原体・特定病原体の例も） -->
