@@ -109,3 +109,13 @@ footer{
   background:#fff;
   border-top:1px solid #eee;
 }
+
+      .tag {
+        display: inline-block;
+        font-size: 0.8rem;
+        background: #e8f7f1;
+        color: #0a6;
+        padding: 2px 8px;
+        border-radius: 999px;
+        margin-left: 6px;
+      }

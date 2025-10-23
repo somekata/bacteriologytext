@@ -1,0 +1,77 @@
+
+      /* 章ページ用の少しだけの上書き（既存 style.css を基本に） */
+      .chapter-hero {
+        background: linear-gradient(135deg, #eafff4, #f4fbff);
+        padding: 28px 20px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px 72px;
+      }
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+      @media (min-width: 960px) {
+        .grid.two {
+          grid-template-columns: 1fr 1fr;
+        }
+        .grid.three {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      .card.note {
+        border-left: 5px solid var(--accent);
+      }
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: #f1f4f6;
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table th,
+      .table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        vertical-align: top;
+      }
+      .table th {
+        background: #f5fbf8;
+        text-align: center;
+      }
+      em {
+        font-style: italic;
+      }
+      .pill {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: #e8f7f1;
+        color: #087f5b;
+        font-size: 0.85rem;
+        margin-right: 6px;
+      }
+      .badge {
+        display: inline-block;
+        background: #087f5b;
+        color: #fff;
+        border-radius: 8px;
+        padding: 2px 8px;
+        font-size: 0.8rem;
+        margin-left: 6px;
+      }
+      .footnotes {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 20px;
+      }
+      ul {
+        list-style: none;
+      }
