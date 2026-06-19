@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対話で学ぶ ペニシリン系薬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --ink: #1B2733;
+    --ink-soft: #4A5A68;
+    --line: #DCE4E9;
+
+    --prof: #2C5F6F;
+    --prof-bg: #EAF2F3;
+    --s1: #C97B3D;
+    --s1-bg: #FBF1E6;
+    --s2: #5B7553;
+    --s2-bg: #EEF3EC;
+    --s3: #7A5A8C;
+    --s3-bg: #F3EEF6;
+
+    --pearl-bg: #FCEFD6;
+    --pearl-line: #D8A24B;
+
+    --note-bg: #EAEFF7;
+    --note-line: #9DB3CE;
+
+    --map-bg: #FFFFFF;
+    --map-line: #D6DEE5;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:48px 20px 32px;
+  }
+
+  .breadcrumb{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0 0 22px;
+    letter-spacing:0.02em;
+  }
+  .breadcrumb a{
+    color:var(--prof);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .breadcrumb a:hover{
+    border-bottom-color:var(--prof);
+  }
+  .breadcrumb .sep{
+    margin:0 6px;
+    color:#B7C2CB;
+  }
+  .breadcrumb .current{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  header.hero{
+    text-align:center;
+    margin-bottom:40px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--prof);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(24px,5vw,34px);
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .subhead{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  .cast{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .cast-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+
+  .section-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:46px 0 22px;
+  }
+  .section-divider:first-of-type{margin-top:0;}
+  .section-num{
+    font-family:"Shippori Mincho",serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    background:var(--prof);
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .section-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .section-divider .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .msg{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .avatar{
+    flex-shrink:0;
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+  }
+  .bubble{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent,#888);
+    border-radius:4px 12px 12px 12px;
+    padding:14px 18px;
+    flex:1;
+  }
+  .name{
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:5px;
+    color:var(--accent,#888);
+    letter-spacing:0.02em;
+  }
+  .text{
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .text strong{ color:var(--ink); }
+  .text em{ font-style:italic; }
+
+  .prof .avatar{background:var(--prof);}
+  .prof .bubble{--accent:var(--prof); background:var(--prof-bg);}
+  .s1 .avatar{background:var(--s1);}
+  .s1 .bubble{--accent:var(--s1); background:var(--s1-bg);}
+  .s2 .avatar{background:var(--s2);}
+  .s2 .bubble{--accent:var(--s2); background:var(--s2-bg);}
+  .s3 .avatar{background:var(--s3);}
+  .s3 .bubble{--accent:var(--s3); background:var(--s3-bg);}
+
+  .map{
+    background:var(--map-bg);
+    border:1px solid var(--map-line);
+    border-radius:10px;
+    padding:6px;
+    margin:18px 0 8px;
+    box-shadow:0 2px 8px rgba(20,40,60,0.05);
+  }
+  .map-group{
+    padding:14px 16px;
+    border-bottom:1px solid #EEF2F5;
+  }
+  .map-group:last-child{ border-bottom:none; }
+  .map-group-title{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--prof);
+    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .map-group-title .tag{
+    font-family:"BIZ UDPGothic",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    background:var(--prof);
+    color:#fff;
+    padding:2px 8px;
+    border-radius:10px;
+  }
+  .map-group-desc{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .map-group-desc .drugs{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  table.dose{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 4px;
+    font-size:14px;
+  }
+  table.dose th, table.dose td{
+    border:1px solid var(--line);
+    padding:7px 10px;
+    text-align:left;
+  }
+  table.dose th{
+    background:#F1F5F7;
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  .pearl{
+    position:relative;
+    margin:34px 4px 40px;
+    background:var(--pearl-bg);
+    border:1px dashed var(--pearl-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+    transform:rotate(-0.6deg);
+    box-shadow:2px 4px 10px rgba(0,0,0,0.06);
+  }
+  .pearl::before{
+    content:"";
+    position:absolute;
+    top:-7px; left:28px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#B23A48;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3);
+  }
+  .pearl-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8A5A12;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .pearl p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#3B2E1A;
+  }
+  .pearl p:last-child{margin-bottom:0;}
+
+  .note{
+    margin:34px 4px 40px;
+    background:var(--note-bg);
+    border:1px solid var(--note-line);
+    border-left:5px solid var(--note-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .note-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#28466B;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .note ul{
+    margin:6px 0 8px;
+    padding-left:20px;
+  }
+  .note li{
+    font-size:15px;
+    color:#23344A;
+    margin-bottom:4px;
+  }
+  .note p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#23344A;
+  }
+  .note p:last-child, .note ul:last-child{margin-bottom:0;}
+
+  .pagenav{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:10px;
+    margin:46px 4px 0;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .pagenav a, .pagenav .disabled{
+    flex:1;
+    text-decoration:none;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--surface);
+  }
+  .pagenav a{
+    color:var(--prof);
+    font-weight:700;
+  }
+  .pagenav a:hover{
+    border-color:var(--prof);
+  }
+  .pagenav .disabled{
+    color:#B7C2CB;
+    cursor:default;
+  }
+  .pagenav .next{ text-align:right; }
+  .pagenav .toc{
+    flex:0 0 auto;
+    text-align:center;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .pagenav small{
+    display:block;
+    font-weight:400;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:#8A99A6;
+    line-height:1.7;
+  }
+
+  @media (max-width:480px){
+    .pagenav{flex-direction:column;}
+    .pagenav .next{text-align:left;}
+    .page{padding:32px 14px 24px;}
+    .avatar{width:32px;height:32px;font-size:12px;}
+    .bubble{padding:12px 14px;}
+    .text{font-size:14.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb"><a href="antimicrobial_series_index.html">抗菌薬学シリーズ</a><span class="sep">＞</span>βラクタム系<span class="sep">＞</span><span class="current">ペニシリン系</span></nav>
+
+  <header class="hero">
+    <div class="eyebrow">感染症学演習 — 抗菌薬各論</div>
+    <h1>対話で学ぶ<br>ペニシリン系薬</h1>
+    <p class="subhead">古典的・ペニシリナーゼ耐性・アミノ・アシルアミノの4系統</p>
+    <div class="cast">
+      <div class="cast-item"><span class="dot" style="background:var(--prof)"></span>教授</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s1)"></span>林さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s2)"></span>中村さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s3)"></span>小川さん</div>
+    </div>
+  </header>
+
+  <!-- I. 全体像 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">ペニシリン系薬の全体像</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">前回のβラクタム総論で、ペニシリンはβラクタム環にチアゾリジン環が結合した構造で、R1側鎖の違いにより多様性が生まれると学びました。今日はペニシリン系薬を実際に4つのサブクラスに分けて見ていきます。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">4つというと、具体的には何が基準で分かれるのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">開発された歴史的な順番で見ると分かりやすいです。最初に天然由来の<strong>古典的ペニシリン</strong>、次にブドウ球菌のペニシリナーゼに対抗するために作られた<strong>ペニシリナーゼ耐性ペニシリン</strong>、続いてグラム陰性菌へスペクトルを広げた<strong>アミノペニシリン</strong>、最後に緑膿菌を含むさらに広い範囲を狙った<strong>アシルアミノペニシリン</strong>、という順で開発されています。</div>
+    </div>
+  </div>
+
+  <div class="map">
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">古典的</span>天然ペニシリン</div>
+      <div class="map-group-desc"><span class="drugs">ペニシリンG・ペニシリンV</span> — グラム陽性菌・スピロヘータに優れた活性</div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">耐ペニシリナーゼ</span>抗ブドウ球菌ペニシリン</div>
+      <div class="map-group-desc"><span class="drugs">オキサシリン・クロキサシリン・ナフシリン・メチシリン</span> — ペニシリナーゼ産生黄色ブドウ球菌が標的</div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">アミノ</span>広域スペクトルペニシリン</div>
+      <div class="map-group-desc"><span class="drugs">アンピシリン・アモキシシリン</span> — グラム陰性菌へスペクトル拡大</div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">アシルアミノ</span>抗緑膿菌ペニシリン</div>
+      <div class="map-group-desc"><span class="drugs">カルボキシ系（カルベニシリン・チカルシリン）／ウレイド系（ピペラシリン・メズロシリン・アズロシリン）</span> — 緑膿菌を含む広域グラム陰性菌</div>
+    </div>
+  </div>
+
+  <!-- II. 古典的ペニシリン -->
+  <div class="section-divider">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">古典的ペニシリン — ペニシリンG・ペニシリンV</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">古典的ペニシリンの抗菌スペクトルから教えてください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        非βラクタマーゼ産生のグラム陽性球菌（連鎖球菌、肺炎球菌など）、腸球菌属、非ペニシリナーゼ産生黄色ブドウ球菌、<em>Clostridium</em>属（<em>C. difficile</em>を除く）、<em>Listeria monocytogenes</em>などに優れた活性を持ちます。特筆すべきは<strong><em>Treponema pallidum</em>（梅毒トレポネーマ）に極めて感受性が高い</strong>ことで、今でも梅毒治療の第一選択です。
+      </div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">ペニシリンGとペニシリンVはどう使い分けますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">ペニシリンVは胃酸による不活性化に強く、経口吸収性に優れるため経口薬として用いられます。連鎖球菌性咽頭炎、軽症の肺炎球菌感染症、リウマチ熱の再発予防、感染性心内膜炎予防などが適応です。一方ペニシリンGは経口での吸収が不安定なため、注射薬として重症感染症や神経梅毒などに使われます。</div>
+    </div>
+  </div>
+
+  <!-- III. ペニシリナーゼ耐性ペニシリン -->
+  <div class="section-divider">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">ペニシリナーゼ耐性ペニシリン — 抗ブドウ球菌ペニシリン</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">「ペニシリナーゼ耐性」という名前が、第一世代セファロスポリンの回で出てきたPC1ペニシリナーゼの話を思い出させます。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">よく覚えていますね。まさにそこにつながる話です。オキサシリンやナフシリン、クロキサシリンといった薬剤は、<strong>黄色ブドウ球菌のペニシリナーゼ（PC1型βラクタマーゼ）にβラクタム環を分解されないよう設計されたペニシリン</strong>です。アシル側鎖が立体的にβラクタム環を保護することで、ペニシリナーゼ産生黄色ブドウ球菌（つまりMSSA）にも有効な活性を保っています。第一世代セファロスポリンがPC1に安定だったのと、考え方の根っこは同じです。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">ということは、MSSA感染症ではペニシリナーゼ耐性ペニシリンとセファゾリンのどちらも候補になるのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。実際、ナフシリンやオキサシリンはMSSA菌血症・心内膜炎の治療における主要な選択肢のひとつで、セファゾリンと並んで重要な位置づけにあります。ただし、グラム陰性菌に対する活性は古典的ペニシリンより劣る点には注意してください。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">「オキサシリン耐性」という言葉もよく聞きますが、これはMRSAのことですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        そのとおりです。βラクタム総論で学んだPBP変異耐性の代表例がこれです。MRSAは外来DNA要素として<strong>mecA遺伝子</strong>を獲得し、これがコードする<strong>PBP2a</strong>はβラクタムへの結合親和性が低いため、ペニシリナーゼ耐性ペニシリンを含むほぼすべてのβラクタム系薬が効かなくなります。臨床検査では、<strong>オキサシリン（またはセフォキシチン）耐性は、抗MRSA薬を除くすべてのβラクタム系薬への耐性を意味する</strong>と理解してください。
+      </div>
+    </div>
+  </div>
+
+  <!-- IV. アミノペニシリン -->
+  <div class="section-divider">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">アミノペニシリン — アンピシリン・アモキシシリン</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">アンピシリンとアモキシシリンは、何が違うのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        抗菌スペクトルはよく似ていますが、いくつか違いがあります。アモキシシリンは腸球菌や<em>Salmonella</em>属に対してアンピシリンより活性が高い一方、赤痢菌に対しては低くなります。最大の違いは<strong>消化管からの吸収</strong>で、アモキシシリンの血中濃度はアンピシリンの2〜2.5倍に達するため、経口薬としてはアモキシシリンが好まれます。
+      </div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">アンピシリンには特有の発疹があると聞きました。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">はい、重要なポイントです。アンピシリンでは斑状丘疹状発疹が約7%の頻度で見られますが、これは<strong>真のペニシリンアレルギーとは機序が異なります</strong>。特に伝染性単核球症（EBV感染症）の患者にアンピシリンを投与すると高頻度に出現することが知られており、伝染性単核球症患者へのアンピシリン投与は避けるべきとされています。そして重要な点として、このアンピシリン疹が出たからといって、必ずしも他のペニシリンによる将来の治療を禁忌にするわけではありません。</div>
+    </div>
+  </div>
+
+  <!-- V. アシルアミノペニシリン -->
+  <div class="section-divider">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">アシルアミノペニシリン — 抗緑膿菌ペニシリン</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">緑膿菌をカバーするペニシリンもあるのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        あります。カルボキシペニシリン（カルベニシリン、チカルシリン）とウレイドペニシリン（ピペラシリン、メズロシリン、アズロシリン）です。中でも<strong>ピペラシリン</strong>は<em>Pseudomonas aeruginosa</em>に対して最も強い活性を持ち、これは外膜を通過して<strong>PBP3</strong>（細胞分裂時の隔壁形成を担う酵素）に到達できる能力によるものです。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">実際の適応はどんな場面ですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">複雑性尿路感染症、下気道感染症（特に肺炎）、腹腔内感染症のような好気性・嫌気性菌混合感染、免疫不全患者の感染症（アミノグリコシドや第三世代セファロスポリンと併用）などです。ただし<strong><em>Bacteroides fragilis</em>に対する活性は比較的平均的</strong>で、この菌が強く疑われる状況では単独使用は推奨されない場合がある点に注意してください。重症・複雑性感染症では併用療法が前提になることが多い薬剤群です。</div>
+    </div>
+  </div>
+
+  <!-- VI. 共通の副作用・耐性 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅵ</div>
+    <div class="section-title">共通の副作用と耐性機構</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">ペニシリン全体に共通する副作用を整理してください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">最も重要なのはアナフィラキシーを含む過敏反応です。そのほか発疹、蕁麻疹、好酸球増多、重症薬疹（スティーブンス・ジョンソン症候群、DRESS症候群など）が共通して見られます。広域スペクトルのペニシリンほど下痢の頻度が高い傾向があります。感受性のある患者では、ペニシリン同士の間で交差過敏性が生じうる点も忘れないでください。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">耐性機構は、βラクタム総論で習った4つがそのまま当てはまりますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。①βラクタマーゼ（ペニシリナーゼ）による分解が最大の機構で、プラスミドの水平伝播により広がります。②PBPの変異・改変（MRSAのPBP2aが代表例）、③透過性の低下、④排出ポンプの過剰発現、という同じ4つの枠組みで理解できます。ペニシリン系を学ぶときも、総論の枠組みに当てはめて整理する習慣を続けてください。</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">サブクラスと「主な標的」の対応関係</div>
+    <p>4つのサブクラスは、開発の経緯どおり「何に対抗するために生まれたか」で覚えると整理しやすくなります。</p>
+    <ul>
+      <li>古典的ペニシリン：天然の感受性スペクトル（グラム陽性菌・スピロヘータ）</li>
+      <li>ペニシリナーゼ耐性ペニシリン：黄色ブドウ球菌のペニシリナーゼ対策</li>
+      <li>アミノペニシリン：グラム陰性菌へのスペクトル拡大</li>
+      <li>アシルアミノペニシリン：緑膿菌を含むさらなる広域化</li>
+    </ul>
+  </div>
+
+  <div class="pearl">
+    <div class="pearl-label">臨床メモ — 試験で問われやすいポイント</div>
+    <p>① ペニシリナーゼ耐性ペニシリン（オキサシリン等）は、黄色ブドウ球菌のペニシリナーゼ(PC1)に対抗するために設計された薬剤で、第一世代セファロスポリンと並びMSSA感染症の主要な選択肢である。</p>
+    <p>② オキサシリン（セフォキシチン）耐性＝MRSA（mecA遺伝子によるPBP2a獲得）であり、抗MRSA薬を除くほぼすべてのβラクタム系薬への耐性を意味する。</p>
+    <p>③ アンピシリン疹は真のアレルギーとは機序が異なり、伝染性単核球症患者で高頻度に出現する。今後のペニシリン治療を一律に禁忌にするものではない。</p>
+  </div>
+
+  <nav class="pagenav">
+    <a href="antimicrobial_betalactam_overview_dialogue.html"><small>← 前へ</small>βラクタム系総論</a>
+    <a class="toc" href="antimicrobial_series_index.html">目次</a>
+    <a class="next" href="cephalosporin_1st_gen_dialogue.html"><small>次へ →</small>セファロスポリン 第一世代</a>
+  </nav>
+
+  <footer>
+    本テキストは AI（Claude, Anthropic）を用いて作成されました。内容には誤りが含まれる可能性があります。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。<br>
+    二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。
+  </footer>
+
+</div>
+</body>
+</html>
