@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対話で学ぶ βラクタム系総論</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --ink: #1B2733;
+    --ink-soft: #4A5A68;
+    --line: #DCE4E9;
+
+    --prof: #2C5F6F;
+    --prof-bg: #EAF2F3;
+    --s1: #C97B3D;
+    --s1-bg: #FBF1E6;
+    --s2: #5B7553;
+    --s2-bg: #EEF3EC;
+    --s3: #7A5A8C;
+    --s3-bg: #F3EEF6;
+
+    --pearl-bg: #FCEFD6;
+    --pearl-line: #D8A24B;
+
+    --note-bg: #EAEFF7;
+    --note-line: #9DB3CE;
+
+    --map-bg: #FFFFFF;
+    --map-line: #D6DEE5;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:48px 20px 32px;
+  }
+
+  .breadcrumb{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0 0 22px;
+    letter-spacing:0.02em;
+  }
+  .breadcrumb a{
+    color:var(--prof);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .breadcrumb a:hover{
+    border-bottom-color:var(--prof);
+  }
+  .breadcrumb .sep{
+    margin:0 6px;
+    color:#B7C2CB;
+  }
+  .breadcrumb .current{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  header.hero{
+    text-align:center;
+    margin-bottom:40px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--prof);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(24px,5vw,34px);
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .subhead{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  .cast{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .cast-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+
+  .section-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:46px 0 22px;
+  }
+  .section-divider:first-of-type{margin-top:0;}
+  .section-num{
+    font-family:"Shippori Mincho",serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    background:var(--prof);
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .section-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .section-divider .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .msg{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .avatar{
+    flex-shrink:0;
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+  }
+  .bubble{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent,#888);
+    border-radius:4px 12px 12px 12px;
+    padding:14px 18px;
+    flex:1;
+  }
+  .name{
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:5px;
+    color:var(--accent,#888);
+    letter-spacing:0.02em;
+  }
+  .text{
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .text strong{ color:var(--ink); }
+  .text em{ font-style:italic; }
+
+  .prof .avatar{background:var(--prof);}
+  .prof .bubble{--accent:var(--prof); background:var(--prof-bg);}
+  .s1 .avatar{background:var(--s1);}
+  .s1 .bubble{--accent:var(--s1); background:var(--s1-bg);}
+  .s2 .avatar{background:var(--s2);}
+  .s2 .bubble{--accent:var(--s2); background:var(--s2-bg);}
+  .s3 .avatar{background:var(--s3);}
+  .s3 .bubble{--accent:var(--s3); background:var(--s3-bg);}
+
+  /* 構造マップ */
+  .map{
+    background:var(--map-bg);
+    border:1px solid var(--map-line);
+    border-radius:10px;
+    padding:6px;
+    margin:18px 0 8px;
+    box-shadow:0 2px 8px rgba(20,40,60,0.05);
+  }
+  .map-group{
+    padding:14px 16px;
+    border-bottom:1px solid #EEF2F5;
+  }
+  .map-group:last-child{ border-bottom:none; }
+  .map-group-title{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--prof);
+    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .map-group-title .tag{
+    font-family:"BIZ UDPGothic",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    background:var(--prof);
+    color:#fff;
+    padding:2px 8px;
+    border-radius:10px;
+  }
+  .map-group-desc{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+
+  table.cmp{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 4px;
+    font-size:13.5px;
+  }
+  table.cmp th, table.cmp td{
+    border:1px solid var(--line);
+    padding:7px 10px;
+    text-align:left;
+  }
+  table.cmp th{
+    background:#F1F5F7;
+    font-weight:700;
+  }
+
+  .pearl{
+    position:relative;
+    margin:34px 4px 40px;
+    background:var(--pearl-bg);
+    border:1px dashed var(--pearl-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+    transform:rotate(-0.6deg);
+    box-shadow:2px 4px 10px rgba(0,0,0,0.06);
+  }
+  .pearl::before{
+    content:"";
+    position:absolute;
+    top:-7px; left:28px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#B23A48;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3);
+  }
+  .pearl-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8A5A12;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .pearl p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#3B2E1A;
+  }
+  .pearl p:last-child{margin-bottom:0;}
+
+  .note{
+    margin:34px 4px 40px;
+    background:var(--note-bg);
+    border:1px solid var(--note-line);
+    border-left:5px solid var(--note-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .note-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#28466B;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .note ul{
+    margin:6px 0 8px;
+    padding-left:20px;
+  }
+  .note li{
+    font-size:15px;
+    color:#23344A;
+    margin-bottom:4px;
+  }
+  .note p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#23344A;
+  }
+  .note p:last-child, .note ul:last-child{margin-bottom:0;}
+
+  .pagenav{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:10px;
+    margin:46px 4px 0;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .pagenav a, .pagenav .disabled{
+    flex:1;
+    text-decoration:none;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--surface);
+  }
+  .pagenav a{
+    color:var(--prof);
+    font-weight:700;
+  }
+  .pagenav a:hover{
+    border-color:var(--prof);
+  }
+  .pagenav .disabled{
+    color:#B7C2CB;
+    cursor:default;
+  }
+  .pagenav .next{ text-align:right; }
+  .pagenav .toc{
+    flex:0 0 auto;
+    text-align:center;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .pagenav small{
+    display:block;
+    font-weight:400;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:#8A99A6;
+    line-height:1.7;
+  }
+
+  @media (max-width:480px){
+    .pagenav{flex-direction:column;}
+    .pagenav .next{text-align:left;}
+    .page{padding:32px 14px 24px;}
+    .avatar{width:32px;height:32px;font-size:12px;}
+    .bubble{padding:12px 14px;}
+    .text{font-size:14.5px;}
+    table.cmp{font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb"><a href="antimicrobial_series_index.html">抗菌薬学シリーズ</a><span class="sep">＞</span>総論<span class="sep">＞</span><span class="current">βラクタム系総論</span></nav>
+
+  <header class="hero">
+    <div class="eyebrow">感染症学演習 — 抗菌薬総論</div>
+    <h1>対話で学ぶ<br>βラクタム系総論</h1>
+    <p class="subhead">ペニシリン・セフェム・カルバペネム・モノバクタムの共通点</p>
+    <div class="cast">
+      <div class="cast-item"><span class="dot" style="background:var(--prof)"></span>教授</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s1)"></span>林さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s2)"></span>中村さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s3)"></span>小川さん</div>
+    </div>
+  </header>
+
+  <!-- I. 共通の化学構造 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">共通の化学構造 — βラクタム環</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">セファロスポリンの各世代を一通り見てきましたが、今日は一段階視点を上げて、「βラクタム系」という大きな括りそのものを扱います。なぜペニシリンもセファロスポリンもカルバペネムもモノバクタムも、同じ「βラクタム系」としてまとめて呼ばれるのでしょうか。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">共通の化学構造を持つからですよね。「βラクタム環」という名前からして、共通の環構造があるのだと思います。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。すべてのβラクタム系抗菌薬は、<strong>3つの炭素原子と1つの窒素原子からなる4員環</strong>（βラクタム環）を持ち、この環構造そのものが抗菌活性の中核です。各クラスは、この基本環に異なる側鎖や環が結合することで個性が生まれます。</div>
+    </div>
+  </div>
+
+  <div class="map">
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">ペニシリン</span></div>
+      <div class="map-group-desc">βラクタム環にチアゾリジン環が結合。R1側鎖により多様な薬剤に分かれる。</div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">セフェム</span></div>
+      <div class="map-group-desc">βラクタム環にジヒドロチアジン環が結合。R1・R2の二つの側鎖を持ち、世代間の違いを生む。</div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">カルバペネム</span></div>
+      <div class="map-group-desc">ヒドロキシエチル側鎖を持つ二環式核。酸素・硫黄原子を欠く構造が、広域スペクトルとβラクタマーゼ安定性に寄与。</div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">モノバクタム</span></div>
+      <div class="map-group-desc">βラクタム環のみで、追加の環構造を持たない単環性の構造。</div>
+    </div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">この構造の違いが、抗菌スペクトルやβラクタマーゼへの安定性の違いにつながるわけですね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。今後ペニシリン系、カルバペネム系、モノバクタム系を個別に学ぶときも、「βラクタム環は共通、側鎖と環構造が違う」という土台を持っておくと理解しやすくなります。</div>
+    </div>
+  </div>
+
+  <!-- II. 共通の作用機序 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">共通の作用機序 — PBPの阻害</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">構造が共通しているということは、作用機序も共通しているのでしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        はい。すべてのβラクタム系抗菌薬は、<strong>ペニシリン結合タンパク（PBP、別名トランスペプチダーゼ）</strong>を阻害することで細菌細胞壁の合成を妨げ、殺菌的に働きます。PBPは、細菌細胞壁の主成分であるペプチドグリカンの架橋形成を担う酵素です。
+      </div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">βラクタム環がどうやってPBPを阻害するのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        ここが面白いところです。βラクタム環は、ペプチドグリカン前駆体の末端にある<strong>D-アラニン-D-アラニン</strong>という部分構造とよく似ています。PBPはβラクタムを本来の基質と「誤認」して結合してしまい、活性部位のセリン残基との間にほぼ不可逆的なアシル酵素中間体を作って失活します。いわば<strong>分子擬態による自爆スイッチ</strong>のような機構です。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">PBPが阻害されるだけで、なぜ菌が死んでしまうのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">トランスペプチダーゼ反応が止まると細胞壁前駆体が蓄積し、同時に細胞壁を分解する自己溶解酵素（オートリシン）が活性化されます。<strong>合成の停止と分解の進行が同時に起こる「無益なサイクル」</strong>が生じ、細胞壁の完全性が失われて菌は溶解死に至ります。単なる「合成阻害」ではなく、細胞自身の分解システムを暴走させる側面がある、という理解が大切です。</div>
+    </div>
+  </div>
+
+  <!-- III. 共通の耐性機構 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">共通の耐性機構 — 作用機序の裏返し</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">予備知識編で「作用標的が分かれば耐性機構も見えてくる」と教わりました。βラクタム系の場合はどうなりますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">良い振り返りです。βラクタム系の耐性機構は、主に4つに整理できます。これまでセファロスポリンの各世代で個別に見てきた耐性は、すべてこの枠組みの中の話でした。</div>
+    </div>
+  </div>
+
+  <table class="cmp">
+    <tr><th>機構</th><th>概要</th></tr>
+    <tr><td>① βラクタマーゼ産生<br>（最重要）</td><td>酵素がβラクタム環を加水分解し、PBPに到達する前に不活性化する。ESBL・AmpC・カルバペネマーゼなど。</td></tr>
+    <tr><td>② PBPの変異・改変</td><td>PBPへの結合親和性そのものが低下する。肺炎球菌のペニシリン耐性、MRSAのPBP2'獲得など。</td></tr>
+    <tr><td>③ 外膜透過性の低下</td><td>グラム陰性菌のポーリン減少・変異により、薬剤が菌体内に届きにくくなる。</td></tr>
+    <tr><td>④ 排出ポンプの過剰発現</td><td>菌体内に入った薬剤を能動的に排出し、有効濃度を下げる。</td></tr>
+  </table>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">①のβラクタマーゼ産生が最重要、というのはこれまでの各論でも繰り返し出てきましたね。ESBL、AmpC、カルバペネマーゼという名前もそれぞれ習いました。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。ESBLは主に第三世代セファロスポリンを、AmpCは第三世代セファロスポリンとセファマイシンを加水分解し、クラブラン酸による阻害には耐性です。カルバペネマーゼに至っては、最後の砦であるカルバペネムまで加水分解してしまいます。「どの酵素が、どの世代・系統の薬剤まで分解できるか」を意識して整理しておくと、各論の知識がつながります。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">②のPBP変異は、MRSAだけの話かと思っていました。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">MRSAが代表例ですが、それだけではありません。肺炎球菌のペニシリン耐性も変異PBPによるものですし、サルモネラ・エンテリカでもPBP3・PBP4・PBP6の点変異により複数のβラクタム系薬への耐性が報告されています。多くの変異PBPは特定の薬剤だけでなく、複数のβラクタムクラスに対する「ジェネラリスト」的な耐性を獲得する点も知っておいてください。</div>
+    </div>
+  </div>
+
+  <!-- IV. 共通の副作用とアレルギー交差反応 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">共通の副作用とアレルギーの交差反応性</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">βラクタム系に共通する副作用も整理してほしいです。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">共通の化学構造を持つため、過敏反応（発疹、蕁麻疹、アナフィラキシー、重症薬疹）の傾向も共通しています。そのほか消化器症状、クロストリジウム・ディフィシル腸炎、血液学的異常、肝酵素上昇、腎機能障害、痙攣、注射部位反応、カンジダ症などの重複感染も、これまでの各論で繰り返し出てきた内容です。臨床的に特に重要なのは<strong>「ペニシリンアレルギーと他のβラクタム系との交差反応性」</strong>です。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">前回の第一世代の回で、セファゾリンは交差反応性が低いという話がありましたが、これはなぜですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        いい質問です。交差反応性を決める主因は、βラクタム環そのものよりも<strong>R1側鎖の類似性</strong>です。ペニシリンとセファロスポリン全体での交差反応率はおよそ2%程度とされますが、アナフィラキシーの既往があり、かつR1側鎖を共有する組み合わせ（特定のアミノセファロスポリンなど）では交差反応率が約40%まで上昇します。<strong>セファゾリンは他のペニシリンと共有しない独自のR1側鎖</strong>を持つため、ペニシリンアレルギーがあっても交差反応性は非常に低いとされています。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">カルバペネムやモノバクタムはどうですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">ペニシリンとカルバペネムの交差反応性は1%未満と低く、ペニシリンとモノバクタム（アズトレオナム）に至っては、免疫学的・臨床的な交差反応性はほぼないとされています。ただし例外があり、<strong>セフタジジムとアズトレオナムはR1側鎖を共有している</strong>ため、セフタジジムアレルギーの患者でアズトレオナムへの反応が報告されています。「βラクタム環が共通だから一律に交差反応する」のではなく、「側鎖の共有関係を個別に確認する」という考え方を持ってください。</div>
+    </div>
+  </div>
+
+  <table class="cmp">
+    <tr><th>組み合わせ</th><th>交差反応性の目安</th></tr>
+    <tr><td>ペニシリン × セファロスポリン（全体）</td><td>約2%</td></tr>
+    <tr><td>ペニシリン × セファロスポリン（アナフィラキシー既往＋R1側鎖共有）</td><td>約40%</td></tr>
+    <tr><td>ペニシリン × セファゾリン（独自のR1側鎖）</td><td>非常に低い</td></tr>
+    <tr><td>ペニシリン × カルバペネム</td><td>1%未満</td></tr>
+    <tr><td>ペニシリン × モノバクタム（アズトレオナム）</td><td>ほぼなし（セフタジジムとのR1側鎖共有は例外）</td></tr>
+  </table>
+
+  <!-- V. 臨床的意義 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">臨床的意義 — これから各論で扱う系統へ</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">βラクタム系全体として、今後の課題はどんなところにありますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">βラクタム系は最も広く使われ、殺菌的で、全体として安全性プロファイルも良好な薬剤群です。一方で、βラクタマーゼ産生菌の世界的な蔓延と多剤耐性菌の増加が大きな課題であり、これに対抗するために新しい広域βラクタマーゼ阻害薬の開発と、βラクタム系薬との配合療法が進められています。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">今日学んだ共通の枠組みをもとに、次はペニシリン系、その後カルバペネム系・モノバクタム系を個別に学んでいくのですね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。今日の総論で得た「共通の構造・共通の機序・共通の耐性パターン・側鎖による個性」という視点を持って、それぞれの系統に進んでください。共通点が分かっていれば、各論はその上に乗る「差分」を覚えるだけで済みます。</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">各論を学ぶときの確認ポイント（βラクタム系版）</div>
+    <p>新しいβラクタム系薬剤に出会ったら、次の順で確認すると整理しやすくなります。</p>
+    <ul>
+      <li>どの環構造を持つか（ペニシリン／セフェム／カルバペネム／モノバクタムなど）</li>
+      <li>R1・R2側鎖の特徴（スペクトル・交差反応性を左右する）</li>
+      <li>どのβラクタマーゼに安定/不安定か</li>
+      <li>PBPへの結合パターン（どのPBPに強く結合するか）</li>
+      <li>ペニシリンアレルギーがある患者に使えるか（側鎖の共有関係で個別判断）</li>
+    </ul>
+  </div>
+
+  <div class="pearl">
+    <div class="pearl-label">臨床メモ — 試験で問われやすいポイント</div>
+    <p>① βラクタム系の共通作用機序は<strong>PBP阻害による細胞壁合成阻害</strong>。βラクタム環がD-アラニン-D-アラニンに分子擬態することで生じる。</p>
+    <p>② 共通の耐性機構は<strong>βラクタマーゼ産生・PBP変異・外膜透過性低下・排出ポンプ</strong>の4つ。βラクタマーゼ産生が臨床的に最重要。</p>
+    <p>③ ペニシリンアレルギーとの交差反応性は<strong>βラクタム環ではなくR1側鎖の共有</strong>で決まる。セファゾリンは独自側鎖のため交差反応性が低く、アズトレオナムはセフタジジムとのみ例外的に交差する。</p>
+  </div>
+
+  <nav class="pagenav">
+    <a href="antimicrobial_overview_dialogue.html"><small>← 前へ</small>抗菌薬の全体像</a>
+    <a class="toc" href="antimicrobial_series_index.html">目次</a>
+    <span class="disabled next"><small>次へ →</small>ペニシリン系（作成予定）</span>
+  </nav>
+
+  <footer>
+    本テキストは AI（Claude, Anthropic）を用いて作成されました。内容には誤りが含まれる可能性があります。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。<br>
+    二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。
+  </footer>
+
+</div>
+</body>
+</html>
