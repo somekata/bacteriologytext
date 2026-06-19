@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対話で学ぶ 第三世代セファロスポリン系薬とオキサセフェム系薬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --ink: #1B2733;
+    --ink-soft: #4A5A68;
+    --line: #DCE4E9;
+
+    --prof: #2C5F6F;
+    --prof-bg: #EAF2F3;
+    --s1: #C97B3D;
+    --s1-bg: #FBF1E6;
+    --s2: #5B7553;
+    --s2-bg: #EEF3EC;
+    --s3: #7A5A8C;
+    --s3-bg: #F3EEF6;
+
+    --pearl-bg: #FCEFD6;
+    --pearl-line: #D8A24B;
+
+    --note-bg: #EAEFF7;
+    --note-line: #9DB3CE;
+
+    --warn-bg: #FBEAEA;
+    --warn-line: #C76464;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:760px;
+    margin:0 auto;
+    padding:48px 20px 32px;
+  }
+
+  header.hero{
+    text-align:center;
+    margin-bottom:40px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--prof);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(24px,5vw,34px);
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .subhead{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  .cast{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .cast-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+
+  .section-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:46px 0 22px;
+  }
+  .section-divider:first-of-type{margin-top:0;}
+  .section-num{
+    font-family:"Shippori Mincho",serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    background:var(--prof);
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .section-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .section-divider .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .msg{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .avatar{
+    flex-shrink:0;
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+  }
+  .bubble{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent,#888);
+    border-radius:4px 12px 12px 12px;
+    padding:14px 18px;
+    flex:1;
+  }
+  .name{
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:5px;
+    color:var(--accent,#888);
+    letter-spacing:0.02em;
+  }
+  .text{
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .text strong{ color:var(--ink); }
+  .text em{ font-style:italic; }
+
+  .prof .avatar{background:var(--prof);}
+  .prof .bubble{--accent:var(--prof); background:var(--prof-bg);}
+  .s1 .avatar{background:var(--s1);}
+  .s1 .bubble{--accent:var(--s1); background:var(--s1-bg);}
+  .s2 .avatar{background:var(--s2);}
+  .s2 .bubble{--accent:var(--s2); background:var(--s2-bg);}
+  .s3 .avatar{background:var(--s3);}
+  .s3 .bubble{--accent:var(--s3); background:var(--s3-bg);}
+
+  table.dose{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 4px;
+    font-size:14px;
+  }
+  table.dose th, table.dose td{
+    border:1px solid var(--line);
+    padding:7px 10px;
+    text-align:left;
+  }
+  table.dose th{
+    background:#F1F5F7;
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  .pearl{
+    position:relative;
+    margin:34px 4px 40px;
+    background:var(--pearl-bg);
+    border:1px dashed var(--pearl-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+    transform:rotate(-0.6deg);
+    box-shadow:2px 4px 10px rgba(0,0,0,0.06);
+  }
+  .pearl::before{
+    content:"";
+    position:absolute;
+    top:-7px; left:28px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#B23A48;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3);
+  }
+  .pearl-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8A5A12;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .pearl p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#3B2E1A;
+  }
+  .pearl p:last-child{margin-bottom:0;}
+
+  .note{
+    margin:34px 4px 40px;
+    background:var(--note-bg);
+    border:1px solid var(--note-line);
+    border-left:5px solid var(--note-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .note-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#28466B;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .note p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#23344A;
+  }
+  .note p:last-child{margin-bottom:0;}
+
+  .warn{
+    margin:34px 4px 40px;
+    background:var(--warn-bg);
+    border:1px solid var(--warn-line);
+    border-left:5px solid var(--warn-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .warn-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8C3838;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .warn p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#5E2828;
+  }
+  .warn p:last-child{margin-bottom:0;}
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:#8A99A6;
+    line-height:1.7;
+  }
+
+  .breadcrumb{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0 0 22px;
+    letter-spacing:0.02em;
+  }
+  .breadcrumb a{
+    color:var(--prof);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .breadcrumb a:hover{
+    border-bottom-color:var(--prof);
+  }
+  .breadcrumb .sep{
+    margin:0 6px;
+    color:#B7C2CB;
+  }
+  .breadcrumb .current{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  .pagenav{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:10px;
+    margin:46px 4px 0;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .pagenav a, .pagenav .disabled{
+    flex:1;
+    text-decoration:none;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--surface);
+  }
+  .pagenav a{
+    color:var(--prof);
+    font-weight:700;
+  }
+  .pagenav a:hover{
+    border-color:var(--prof);
+  }
+  .pagenav .disabled{
+    color:#B7C2CB;
+    cursor:default;
+  }
+  .pagenav .next{ text-align:right; }
+  .pagenav .toc{
+    flex:0 0 auto;
+    text-align:center;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .pagenav small{
+    display:block;
+    font-weight:400;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+
+  @media (max-width:480px){
+    .pagenav{flex-direction:column;}
+    .pagenav .next{text-align:left;}
+    .page{padding:32px 14px 24px;}
+    .avatar{width:32px;height:32px;font-size:12px;}
+    .bubble{padding:12px 14px;}
+    .text{font-size:14.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb"><a href="antimicrobial_series_index.html">抗菌薬学シリーズ</a><span class="sep">＞</span>βラクタム系<span class="sep">＞</span>セファロスポリン系<span class="sep">＞</span><span class="current">第三世代＋オキサセフェム</span></nav>
+
+  <header class="hero">
+    <div class="eyebrow">感染症学演習 — 抗菌薬各論</div>
+    <h1>対話で学ぶ<br>第三世代セファロスポリン系薬<br>とオキサセフェム系薬</h1>
+    <p class="subhead">抗緑膿菌活性の有無、そしてオキサセフェムの使いどころ</p>
+    <div class="cast">
+      <div class="cast-item"><span class="dot" style="background:var(--prof)"></span>教授</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s1)"></span>林さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s2)"></span>中村さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s3)"></span>小川さん</div>
+    </div>
+  </header>
+
+  <!-- I. 抗緑膿菌活性による分類 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">第三世代の最重要ポイント — 抗緑膿菌活性の有無</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">今日は第三世代セファロスポリンです。この世代を理解するうえで、まず押さえるべき軸は何だと思いますか。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">グラム陰性菌への活性がさらに拡大して、βラクタマーゼへの安定性も上がる、という点でしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">それも事実ですが、臨床的に一番大事なのは<strong>抗緑膿菌活性の有無による二分法</strong>です。これが薬剤選択を大きく左右します。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">抗緑膿菌活性あり、というとセフタジジムですね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        その通りです。<strong>セフタジジム・セフォペラゾン</strong>が<em>Pseudomonas aeruginosa</em>（緑膿菌）に対する活性を持ち、その中でもセフタジジムが最も強力です。<br>
+        一方、<strong>セフトリアキソン・セフォタキシム・セフチゾキシム・セフィキシム（経口）</strong>は抗緑膿菌活性を持ちません。その代わり、セフトリアキソンやセフォタキシムはグラム陽性球菌（肺炎球菌など）への活性が、セフタジジムより優れています。
+      </div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">つまり「広域＝なんでも強い」わけではなく、トレードオフがあるんですね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。セフタジジムは緑膿菌に強い分、グラム陽性球菌への活性は他の第三世代より劣ります。緑膿菌をカバーする必要がない市中感染症に漫然とセフタジジムを使うのは適切ではありません。</div>
+    </div>
+  </div>
+
+  <!-- II. 各薬剤の特徴 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">代表薬の特徴と適応</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">セフトリアキソンの特徴を教えてください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">半減期が長く（約8時間）、<strong>1日1回投与</strong>が可能です。胆汁中排泄が主体で、髄膜炎、市中肺炎、淋菌感染症、急性腎盂腎炎など幅広く使われ、外来での非経口投与（OPAT）にも適しています。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">セフォタキシムはセフトリアキソンとどう違いますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">抗菌スペクトルはよく似ていますが、セフォタキシムは活性代謝物（デスアセチルセフォタキシム）を持ち、半減期が短いため通常1日複数回投与が必要です。腎排泄が主体なので、胆汁排泄主体のセフトリアキソンと使い分けることがあります。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">経口のセフィキシムはどんな場面で使いますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">単純性尿路感染症、中耳炎、咽頭炎・扁桃炎、単純性淋菌感染症などです。ただし<em>Pseudomonas aeruginosa</em>、腸球菌、<em>Listeria monocytogenes</em>、MRSAには無効である点に注意してください。</div>
+    </div>
+  </div>
+
+  <!-- III. 用法用量 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">用法用量</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        <table class="dose">
+          <tr><th>薬剤</th><th>適応</th><th>用量・間隔</th></tr>
+          <tr><td>セフタジジム<br>(注射・成人)</td><td>通常用量</td><td>1 g を8〜12時間毎</td></tr>
+          <tr><td></td><td>重症・生命を脅かす感染症</td><td>2 g を8時間毎</td></tr>
+          <tr><td rowspan="2">セフトリアキソン<br>(注射・成人)</td><td>通常用量</td><td>1〜2 g を1日1回</td></tr>
+          <tr><td>重症感染症</td><td>1日2 g以上（最大1日4 g）</td></tr>
+          <tr><td>セフォタキシム<br>(注射・成人)</td><td>中等症〜重症</td><td>1〜2 g を8時間毎</td></tr>
+          <tr><td>セフィキシム<br>(経口・成人)</td><td>通常用量</td><td>400 mg を1日1回</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">腎機能障害の患者さんでは調整が必要ですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">セフタジジムやセフォタキシムなど腎排泄が主体の薬剤では用量調整が必要です。一方、セフトリアキソンは胆汁排泄が主体のため、軽度〜中等度の腎機能障害では通常調整不要とされています。</div>
+    </div>
+  </div>
+
+  <!-- IV. 副作用 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">副作用</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">第三世代に共通する副作用は何ですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">下痢、悪心・嘔吐、カンジダ症、発疹が比較的多く見られます。全体として忍容性は良好です。ただしセフトリアキソンには特有の注意点があります。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">何でしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">高用量（1日2 g以上）で<strong>可逆性の胆嚢スラッジ</strong>を起こすことがあります。真の胆石症は0.1%未満とまれですが、新生児では<strong>カルシウム含有製剤との併用が禁忌</strong>です。沈殿物形成による重篤な合併症のリスクがあるためで、これは国家試験でも頻出のポイントです。</div>
+    </div>
+  </div>
+
+  <!-- V. 耐性 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">耐性機構 — ESBLとAmpC</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">第三世代に対する耐性で重要なものは何でしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        最も重要なのは<strong>基質特異性拡張型βラクタマーゼ（ESBL）</strong>です。プラスミド上に存在し細菌間で水平伝播するため世界的に蔓延しており、<em>Escherichia coli</em>や<em>Klebsiella pneumoniae</em>などで多く検出されます。ESBL産生菌はカルバペネムには感受性を保ちます。<br>
+        もう一つが<strong>AmpCβラクタマーゼ</strong>です。クラブラン酸阻害には耐性ですが、セファマイシン（セフォキシチン）に耐性を示す点がESBLとの鑑別点で、通常セフェピムやカルバペネムには感受性を保ちます。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">AmpCはどんな菌が問題になりますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text"><em>Enterobacter cloacae</em>複合体、<em>Klebsiella aerogenes</em>、<em>Citrobacter freundii</em>などは染色体性AmpCを誘導性に産生し、治療開始時は感受性でも治療中に耐性化することがあります。これは「SPACE」と呼ばれる菌群の特徴として覚えておくとよいでしょう。</div>
+    </div>
+  </div>
+
+  <!-- VI. オキサセフェム -->
+  <div class="section-divider">
+    <div class="section-num">Ⅵ</div>
+    <div class="section-title">オキサセフェム系薬の位置づけと使いどころ</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">先生、フロモキセフやラタモキセフは「第三世代セファロスポリン」と呼ばれることがありますが、これも正しいのでしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">前回のセフメタゾールと同じ整理が必要です。フロモキセフ・ラタモキセフは構造的には<strong>オキサセフェム系薬</strong>であり、セファロスポリン核の1位の硫黄原子が酸素原子に置換された別の系統です。抗菌スペクトルが第三世代セファロスポリンに近いことから便宜上「第三世代」と呼ばれることがありますが、厳密には<strong>世代分類はセファロスポリン系薬に対する概念</strong>であり、オキサセフェム系薬はその対象に含まれません。</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">用語の整理 — オキサセフェムも「世代」分類の対象外</div>
+    <p>第一〜第四世代という分類は<strong>セファロスポリン系薬</strong>に固有の概念です。</p>
+    <p>オキサセフェム系薬（ラタモキセフ、フロモキセフ）は1位の酸素置換という構造的特徴を持つ別系統であり、抗菌スペクトルが近いことから慣用的に「第三世代」と呼ばれることがあるだけで、厳密な分類上はセファロスポリン系薬には含まれません。</p>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">では、オキサセフェムならではの強みは何ですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        二つあります。一つは<strong>嫌気性菌への優れた活性</strong>です。<em>Bacteroides</em>属、<em>Clostridium</em>属、<em>Fusobacterium</em>属、<em>Peptostreptococcus</em>属に強く、ラタモキセフやセフォキシチンよりも優れます。<br>
+        もう一つは、特にフロモキセフにおいて<strong>非AmpC型ESBL産生菌に対する安定性</strong>です。これにより、ESBL産生腸内細菌科による感染症でカルバペネムを温存したい場面の代替薬として価値があります。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">嫌気性菌にもESBLにも強いなら、具体的にどんな場面で使うのが向いていますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">代表的なのは<strong>腹腔内感染症</strong>のように、好気性のグラム陰性菌と嫌気性菌が混在しやすい感染症です。さらに、ESBL産生菌が疑われる新生児敗血症の治療においても、カルバペネムを温存する選択肢としてフロモキセフが注目されています。一方で<em>Pseudomonas aeruginosa</em>、<em>Acinetobacter</em>属、MRSA、腸球菌には無効なので、これらが想定される場合は適しません。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">副作用面で気をつけることはありますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">オキサセフェム系薬で最も重大なのは<strong>出血傾向</strong>です。特にラタモキセフはN-メチルチオテトラゾール側鎖を持ち、ビタミンK代謝阻害による凝固障害と血小板機能障害を高頻度に引き起こします。フロモキセフはこの側鎖がヒドロキシエチル基に置換されているため出血傾向は軽度ですが、ビタミンK代謝への阻害作用は残るため、ビタミンK貯蔵量が低い患者や出血リスクの高い患者では凝固検査のモニタリングが推奨されます。</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-label">注意 — オキサセフェムと出血傾向</div>
+    <p>ラタモキセフ＞フロモキセフの順に出血リスクが高い。栄養不良、長期絶食、抗凝固薬併用などビタミンK欠乏のリスクがある患者には特に注意し、必要に応じてビタミンK補充や凝固能のモニタリングを行う。</p>
+  </div>
+
+  <div class="pearl">
+    <div class="pearl-label">臨床メモ — 試験で問われやすいポイント</div>
+    <p>① 第三世代セファロスポリンは<strong>抗緑膿菌活性の有無</strong>でまず二分する：あり＝セフタジジム・セフォペラゾン／なし＝セフトリアキソン・セフォタキシム・セフィキシムなど。</p>
+    <p>② オキサセフェム系薬（フロモキセフ・ラタモキセフ）は便宜上「第三世代」と呼ばれることがあるが、厳密には世代分類はセファロスポリン系薬の概念であり対象外。</p>
+    <p>③ オキサセフェムの使いどころは<strong>嫌気性菌混合感染（腹腔内感染症など）とESBL産生菌感染症</strong>。ただし出血傾向、特にラタモキセフでの凝固障害に注意。</p>
+  </div>
+
+  <nav class="pagenav">
+    <a href="cephalosporin_2nd_gen_cefmetazole_dialogue.html"><small>← 前へ</small>セファロスポリン 第二世代</a>
+    <a class="toc" href="antimicrobial_series_index.html">目次</a>
+    <a class="next" href="cephalosporin_4th_gen_cefepime_dialogue.html"><small>次へ →</small>セファロスポリン 第四世代</a>
+  </nav>
+
+  <footer>
+    本テキストは AI（Claude, Anthropic）を用いて作成されました。内容には誤りが含まれる可能性があります。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。<br>
+    二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。
+  </footer>
+
+</div>
+</body>
+</html>

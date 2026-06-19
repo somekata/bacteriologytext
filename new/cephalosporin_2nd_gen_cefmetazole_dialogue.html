@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対話で学ぶ 第二世代セファロスポリン系薬とセフメタゾール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --ink: #1B2733;
+    --ink-soft: #4A5A68;
+    --line: #DCE4E9;
+
+    --prof: #2C5F6F;
+    --prof-bg: #EAF2F3;
+    --s1: #C97B3D;
+    --s1-bg: #FBF1E6;
+    --s2: #5B7553;
+    --s2-bg: #EEF3EC;
+    --s3: #7A5A8C;
+    --s3-bg: #F3EEF6;
+
+    --pearl-bg: #FCEFD6;
+    --pearl-line: #D8A24B;
+
+    --note-bg: #EAEFF7;
+    --note-line: #9DB3CE;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:760px;
+    margin:0 auto;
+    padding:48px 20px 32px;
+  }
+
+  header.hero{
+    text-align:center;
+    margin-bottom:40px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--prof);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(24px,5vw,34px);
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .subhead{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  .cast{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .cast-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+
+  .section-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:46px 0 22px;
+  }
+  .section-divider:first-of-type{margin-top:0;}
+  .section-num{
+    font-family:"Shippori Mincho",serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    background:var(--prof);
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .section-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .section-divider .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .msg{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .avatar{
+    flex-shrink:0;
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+  }
+  .bubble{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent,#888);
+    border-radius:4px 12px 12px 12px;
+    padding:14px 18px;
+    flex:1;
+  }
+  .name{
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:5px;
+    color:var(--accent,#888);
+    letter-spacing:0.02em;
+  }
+  .text{
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .text strong{ color:var(--ink); }
+  .text em{ font-style:italic; }
+
+  .prof .avatar{background:var(--prof);}
+  .prof .bubble{--accent:var(--prof); background:var(--prof-bg);}
+  .s1 .avatar{background:var(--s1);}
+  .s1 .bubble{--accent:var(--s1); background:var(--s1-bg);}
+  .s2 .avatar{background:var(--s2);}
+  .s2 .bubble{--accent:var(--s2); background:var(--s2-bg);}
+  .s3 .avatar{background:var(--s3);}
+  .s3 .bubble{--accent:var(--s3); background:var(--s3-bg);}
+
+  table.dose{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 4px;
+    font-size:14px;
+  }
+  table.dose th, table.dose td{
+    border:1px solid var(--line);
+    padding:7px 10px;
+    text-align:left;
+  }
+  table.dose th{
+    background:#F1F5F7;
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  .pearl{
+    position:relative;
+    margin:34px 4px 40px;
+    background:var(--pearl-bg);
+    border:1px dashed var(--pearl-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+    transform:rotate(-0.6deg);
+    box-shadow:2px 4px 10px rgba(0,0,0,0.06);
+  }
+  .pearl::before{
+    content:"";
+    position:absolute;
+    top:-7px; left:28px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#B23A48;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3);
+  }
+  .pearl-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8A5A12;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .pearl p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#3B2E1A;
+  }
+  .pearl p:last-child{margin-bottom:0;}
+
+  .note{
+    margin:34px 4px 40px;
+    background:var(--note-bg);
+    border:1px solid var(--note-line);
+    border-left:5px solid var(--note-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .note-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#28466B;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .note p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#23344A;
+  }
+  .note p:last-child{margin-bottom:0;}
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:#8A99A6;
+    line-height:1.7;
+  }
+
+  .breadcrumb{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0 0 22px;
+    letter-spacing:0.02em;
+  }
+  .breadcrumb a{
+    color:var(--prof);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .breadcrumb a:hover{
+    border-bottom-color:var(--prof);
+  }
+  .breadcrumb .sep{
+    margin:0 6px;
+    color:#B7C2CB;
+  }
+  .breadcrumb .current{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  .pagenav{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:10px;
+    margin:46px 4px 0;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .pagenav a, .pagenav .disabled{
+    flex:1;
+    text-decoration:none;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--surface);
+  }
+  .pagenav a{
+    color:var(--prof);
+    font-weight:700;
+  }
+  .pagenav a:hover{
+    border-color:var(--prof);
+  }
+  .pagenav .disabled{
+    color:#B7C2CB;
+    cursor:default;
+  }
+  .pagenav .next{ text-align:right; }
+  .pagenav .toc{
+    flex:0 0 auto;
+    text-align:center;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .pagenav small{
+    display:block;
+    font-weight:400;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+
+  @media (max-width:480px){
+    .pagenav{flex-direction:column;}
+    .pagenav .next{text-align:left;}
+    .page{padding:32px 14px 24px;}
+    .avatar{width:32px;height:32px;font-size:12px;}
+    .bubble{padding:12px 14px;}
+    .text{font-size:14.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb"><a href="antimicrobial_series_index.html">抗菌薬学シリーズ</a><span class="sep">＞</span>βラクタム系<span class="sep">＞</span>セファロスポリン系<span class="sep">＞</span><span class="current">第二世代＋セファマイシン</span></nav>
+
+  <header class="hero">
+    <div class="eyebrow">感染症学演習 — 抗菌薬各論</div>
+    <h1>対話で学ぶ<br>第二世代セファロスポリン系薬<br>とセフメタゾール</h1>
+    <p class="subhead">セフロキシム・セファクロルと、セファマイシン系薬の位置づけ</p>
+    <div class="cast">
+      <div class="cast-item"><span class="dot" style="background:var(--prof)"></span>教授</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s1)"></span>林さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s2)"></span>中村さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s3)"></span>小川さん</div>
+    </div>
+  </header>
+
+  <!-- I. 抗菌スペクトル -->
+  <div class="section-divider">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">第二世代の位置づけと抗菌スペクトル</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">前回は第一世代を学びました。今日は第二世代セファロスポリンです。第一世代と比べて何が変わりますか。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">グラム陰性菌に対する活性が広がります。特に<em>Haemophilus influenzae</em>（インフルエンザ菌、アンピシリン耐性株を含む）や<em>Moraxella catarrhalis</em>、腸内細菌科の細菌に有効です。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">代表薬は？</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">注射薬はセフロキシム、経口薬はセフロキシムアキセチルやセファクロルです。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">正解です。ただし一つ注意点があります。グラム陰性菌が広がる一方で、<strong>肺炎球菌に対する活性は第一世代より劣ります</strong>。特にペニシリン低感受性肺炎球菌に対しては、経口の第二・第三世代セファロスポリンの活性は不安定で、単剤治療としては推奨されません。</div>
+    </div>
+  </div>
+
+  <!-- II. 適応 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">適応</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">実際の使用場面を教えてください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        注射用セフロキシムは、下気道感染症（肺炎を含む）、尿路感染症、皮膚・軟部組織感染症、敗血症、髄膜炎、淋菌感染症、骨・関節感染症、周術期予防投与に使われます。<br>
+        経口のセフロキシムアキセチルは、外来での気管支炎・肺炎、中耳炎、副鼻腔炎、扁桃炎、尿路感染症、淋菌感染症を含む性器感染症などに用いられます。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">セファクロルは何に使いますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">慢性気管支炎の急性増悪、咽頭炎・扁桃炎、単純性の皮膚・軟部組織感染症が主な適応です。後で触れますが、セファクロルは過敏症の頻度が高いという特徴があるので覚えておいてください。</div>
+    </div>
+  </div>
+
+  <!-- III. 用法用量 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">用法用量</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">代表的な用量を整理してください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        <table class="dose">
+          <tr><th>薬剤</th><th>適応</th><th>用量・間隔</th></tr>
+          <tr><td rowspan="2">セフロキシム<br>(注射・成人)</td><td>通常感染症</td><td>750 mg〜1.5 g を8時間毎</td></tr>
+          <tr><td>生命を脅かす感染症</td><td>1.5 g を6時間毎</td></tr>
+          <tr><td>セフロキシムアキセチル<br>(経口・成人)</td><td>多くの感染症</td><td>250 mg を1日2回（肺炎・重症下気道感染症は500 mg 1日2回）</td></tr>
+          <tr><td>セファクロル徐放錠<br>(経口・成人)</td><td>咽頭炎・扁桃炎</td><td>375 mg を12時間毎、10日間</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">周術期予防はセフロキシム単剤ですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">手術前30分〜1時間に1.5 gを静注します。腎機能障害患者では用量調整が必須である点も忘れないでください。</div>
+    </div>
+  </div>
+
+  <!-- IV. 副作用 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">副作用</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">最も多い副作用は何でしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">消化器症状（下痢、悪心、嘔吐）が最も頻度の高い副作用です。そのほか過敏反応、肝胆道系障害（薬剤性肝障害、胆汁うっ滞性肝炎）、血液学的異常などが報告されています。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">先ほどセファクロルの過敏症の話がありましたが、具体的にどの程度違うのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">セファクロルは他の第二・第三世代セファロスポリンと比較して、過敏症（約61% vs 約44〜45%）およびアナフィラキシー（約20% vs 約5%）の報告頻度が有意に高いことが知られています。女性、65歳未満、薬剤併用がリスク因子です。また高齢者では第二世代セファロスポリンによる肝胆道系副作用の報告のうち約半数が高齢者に集中し、一部は致死的転帰をたどることも報告されています。</div>
+    </div>
+  </div>
+
+  <!-- V. 耐性 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">耐性機構</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">耐性については、第一世代と何か違いがありますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        重要なのは<strong>染色体性AmpCβラクタマーゼ</strong>を産生する菌種です。<em>Enterobacter cloacae</em>複合体、<em>Klebsiella aerogenes</em>（旧<em>Enterobacter aerogenes</em>）、<em>Citrobacter freundii</em>などは、基礎的なAmpC産生により第一・第二世代セファロスポリンに本質的耐性を示します。これらの菌は第三世代セファロスポリンへの曝露後、約20%で耐性が出現しうる点も臨床上重要です。<br>
+        そのほか、プラスミド媒介性βラクタマーゼやESBLによる加水分解、PBPの変異、外膜ポーリンの減少、排出ポンプの活性化なども関与します。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">MRSAや緑膿菌には無効ですよね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。メチシリン耐性黄色ブドウ球菌、緑膿菌のほとんどの株、腸球菌は第二世代セファロスポリンに耐性です。</div>
+    </div>
+  </div>
+
+  <!-- VI. セフメタゾール・セファマイシン -->
+  <div class="section-divider">
+    <div class="section-num">Ⅵ</div>
+    <div class="section-title">セフメタゾールとセファマイシン系薬</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">先生、教科書ではセフメタゾールが「第二世代セファロスポリン」として紹介されていることがあるのですが、これは正しいのでしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">良い質問です。ここは整理しておきましょう。セフメタゾールは構造的には<strong>セファマイシン系薬</strong>に分類されます。セファロスポリン核の7位に7α-メトキシ基を持つ点が、セファロスポリン系薬とは異なる特徴です。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">でも臨床の場では「第二世代」として扱われることが多いですよね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">便宜上、抗菌スペクトルが似ていることから第二世代セファロスポリンのサブグループとして扱われることはあります。ただし、厳密には「世代」という分類概念そのものがセファロスポリン系薬に対して定義されたものであり、セファマイシン系薬は本来この世代分類の対象には含まれません。試験などでは「セフメタゾールは構造上セファマイシン系薬であり、厳密な意味でのセファロスポリンの世代分類には含まれない」と答えられるようにしておいてください。</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">用語の整理 — 「世代」はセファロスポリン系薬の概念</div>
+    <p>第一〜第四世代という分類は、本来<strong>セファロスポリン系薬</strong>の抗菌スペクトルの変遷を表すために用いられる概念です。</p>
+    <p>セファマイシン系薬（セフォキシチン、セフォテタン、セフメタゾールなど）は7α-メトキシ基を持つ別の系統であり、抗菌スペクトルが第二世代セファロスポリンに近いことから便宜的に「第二世代に分類されることがある」だけで、構造上・厳密な分類上はセファロスポリン系薬そのものではありません。</p>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">セファマイシン系薬は嫌気性菌に強いというイメージがあるのですが、セフメタゾールも同じですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そこも丁寧に区別してほしいところです。セファマイシン系薬は全体としては嫌気性菌に対する活性が一様に強いわけではありません。その中で<strong>セフメタゾールは特に<em>Bacteroides fragilis</em>を含む嫌気性菌に対して強い活性</strong>を示すことが知られており、これがセフメタゾールの臨床的な特徴のひとつです。「セファマイシン系薬＝みな嫌気性菌に強い」と一括りにせず、「セフメタゾールが嫌気性菌に強い代表格」と理解しておきましょう。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">なるほど。だから腹腔内感染症や婦人科感染症など、嫌気性菌の関与が疑われる混合感染にセフメタゾールが選ばれやすいのですね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。あわせて、セファマイシン系薬は7α-メトキシ基によりβラクタマーゼに対する安定性が高く、多くのプラスミド媒介性βラクタマーゼやESBLによる加水分解を受けにくいという長所もあります。ただし緑膿菌、メチシリン耐性黄色ブドウ球菌、腸球菌には無効である点は第二世代セファロスポリンと共通です。</div>
+    </div>
+  </div>
+
+  <div class="pearl">
+    <div class="pearl-label">臨床メモ — 試験で問われやすいポイント</div>
+    <p>① セフメタゾールは「セファマイシン系薬」であり、厳密な意味での「第二世代セファロスポリン」ではない（便宜上そう分類されることがあるだけ）。</p>
+    <p>② セファマイシン系薬全体が一様に嫌気性菌へ強いわけではなく、<strong>セフメタゾールが嫌気性菌（<em>Bacteroides fragilis</em>など）に強い代表薬</strong>である。</p>
+  </div>
+
+  <nav class="pagenav">
+    <a href="cephalosporin_1st_gen_dialogue.html"><small>← 前へ</small>セファロスポリン 第一世代</a>
+    <a class="toc" href="antimicrobial_series_index.html">目次</a>
+    <a class="next" href="cephalosporin_3rd_gen_oxacephem_dialogue.html"><small>次へ →</small>セファロスポリン 第三世代</a>
+  </nav>
+
+  <footer>
+    本テキストは AI（Claude, Anthropic）を用いて作成されました。内容には誤りが含まれる可能性があります。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。<br>
+    二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。
+  </footer>
+
+</div>
+</body>
+</html>

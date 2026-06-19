@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対話で学ぶ 抗菌薬の全体像</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --ink: #1B2733;
+    --ink-soft: #4A5A68;
+    --line: #DCE4E9;
+
+    --prof: #2C5F6F;
+    --prof-bg: #EAF2F3;
+    --s1: #C97B3D;
+    --s1-bg: #FBF1E6;
+    --s2: #5B7553;
+    --s2-bg: #EEF3EC;
+    --s3: #7A5A8C;
+    --s3-bg: #F3EEF6;
+
+    --pearl-bg: #FCEFD6;
+    --pearl-line: #D8A24B;
+
+    --note-bg: #EAEFF7;
+    --note-line: #9DB3CE;
+
+    --map-bg: #FFFFFF;
+    --map-line: #D6DEE5;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:48px 20px 32px;
+  }
+
+  header.hero{
+    text-align:center;
+    margin-bottom:40px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--prof);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(24px,5vw,34px);
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .subhead{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  .cast{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .cast-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+
+  .section-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:46px 0 22px;
+  }
+  .section-divider:first-of-type{margin-top:0;}
+  .section-num{
+    font-family:"Shippori Mincho",serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    background:var(--prof);
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .section-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .section-divider .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .msg{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .avatar{
+    flex-shrink:0;
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+  }
+  .bubble{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent,#888);
+    border-radius:4px 12px 12px 12px;
+    padding:14px 18px;
+    flex:1;
+  }
+  .name{
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:5px;
+    color:var(--accent,#888);
+    letter-spacing:0.02em;
+  }
+  .text{
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .text strong{ color:var(--ink); }
+  .text em{ font-style:italic; }
+
+  .prof .avatar{background:var(--prof);}
+  .prof .bubble{--accent:var(--prof); background:var(--prof-bg);}
+  .s1 .avatar{background:var(--s1);}
+  .s1 .bubble{--accent:var(--s1); background:var(--s1-bg);}
+  .s2 .avatar{background:var(--s2);}
+  .s2 .bubble{--accent:var(--s2); background:var(--s2-bg);}
+  .s3 .avatar{background:var(--s3);}
+  .s3 .bubble{--accent:var(--s3); background:var(--s3-bg);}
+
+  /* 分類マップ */
+  .map{
+    background:var(--map-bg);
+    border:1px solid var(--map-line);
+    border-radius:10px;
+    padding:6px;
+    margin:18px 0 8px;
+    box-shadow:0 2px 8px rgba(20,40,60,0.05);
+  }
+  .map-group{
+    padding:14px 16px;
+    border-bottom:1px solid #EEF2F5;
+  }
+  .map-group:last-child{ border-bottom:none; }
+  .map-group-title{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--prof);
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .map-group-title .tag{
+    font-family:"BIZ UDPGothic",sans-serif;
+    font-size:11px;
+    font-weight:700;
+    background:var(--prof);
+    color:#fff;
+    padding:2px 8px;
+    border-radius:10px;
+  }
+  .map-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 10px;
+    margin-bottom:6px;
+    align-items:baseline;
+    font-size:14px;
+  }
+  .map-row:last-child{ margin-bottom:0; }
+  .map-sub{
+    font-weight:700;
+    color:var(--ink);
+    min-width:118px;
+    flex-shrink:0;
+  }
+  .map-items{
+    color:var(--ink-soft);
+  }
+  .map-items .item{
+    color:var(--ink);
+  }
+  .map-items .item::after{
+    content:"・";
+    color:#B7C2CB;
+  }
+  .map-items .item:last-child::after{
+    content:"";
+  }
+
+  .axis-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:14px 0 6px;
+  }
+  .axis-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .axis-card .axis-title{
+    font-weight:700;
+    font-size:14px;
+    color:var(--prof);
+    margin-bottom:4px;
+  }
+  .axis-card .axis-desc{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+
+  .pearl{
+    position:relative;
+    margin:34px 4px 40px;
+    background:var(--pearl-bg);
+    border:1px dashed var(--pearl-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+    transform:rotate(-0.6deg);
+    box-shadow:2px 4px 10px rgba(0,0,0,0.06);
+  }
+  .pearl::before{
+    content:"";
+    position:absolute;
+    top:-7px; left:28px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#B23A48;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3);
+  }
+  .pearl-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8A5A12;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .pearl p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#3B2E1A;
+  }
+  .pearl p:last-child{margin-bottom:0;}
+
+  .note{
+    margin:34px 4px 40px;
+    background:var(--note-bg);
+    border:1px solid var(--note-line);
+    border-left:5px solid var(--note-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .note-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#28466B;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .note ul{
+    margin:6px 0 8px;
+    padding-left:20px;
+  }
+  .note li{
+    font-size:15px;
+    color:#23344A;
+    margin-bottom:4px;
+  }
+  .note p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#23344A;
+  }
+  .note p:last-child, .note ul:last-child{margin-bottom:0;}
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:#8A99A6;
+    line-height:1.7;
+  }
+
+  .breadcrumb{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0 0 22px;
+    letter-spacing:0.02em;
+  }
+  .breadcrumb a{
+    color:var(--prof);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .breadcrumb a:hover{
+    border-bottom-color:var(--prof);
+  }
+  .breadcrumb .sep{
+    margin:0 6px;
+    color:#B7C2CB;
+  }
+  .breadcrumb .current{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  .pagenav{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:10px;
+    margin:46px 4px 0;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .pagenav a, .pagenav .disabled{
+    flex:1;
+    text-decoration:none;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--surface);
+  }
+  .pagenav a{
+    color:var(--prof);
+    font-weight:700;
+  }
+  .pagenav a:hover{
+    border-color:var(--prof);
+  }
+  .pagenav .disabled{
+    color:#B7C2CB;
+    cursor:default;
+  }
+  .pagenav .next{ text-align:right; }
+  .pagenav .toc{
+    flex:0 0 auto;
+    text-align:center;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .pagenav small{
+    display:block;
+    font-weight:400;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+
+  @media (max-width:480px){
+    .pagenav{flex-direction:column;}
+    .pagenav .next{text-align:left;}
+    .page{padding:32px 14px 24px;}
+    .avatar{width:32px;height:32px;font-size:12px;}
+    .bubble{padding:12px 14px;}
+    .text{font-size:14.5px;}
+    .map-sub{min-width:100%;}
+    .axis-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb"><a href="antimicrobial_series_index.html">抗菌薬学シリーズ</a><span class="sep">＞</span><span class="current">総論：抗菌薬の全体像</span></nav>
+
+  <header class="hero">
+    <div class="eyebrow">感染症学演習 — 抗菌薬総論</div>
+    <h1>対話で学ぶ<br>抗菌薬の全体像</h1>
+    <p class="subhead">シリーズ予備知識編 — 各論に入る前に地図を持つ</p>
+    <div class="cast">
+      <div class="cast-item"><span class="dot" style="background:var(--prof)"></span>教授</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s1)"></span>林さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s2)"></span>中村さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s3)"></span>小川さん</div>
+    </div>
+  </header>
+
+  <!-- I. なぜ地図が必要か -->
+  <div class="section-divider">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">各論に入る前に、なぜ地図が必要か</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">これまでセファロスポリンの各世代を個別に見てきましたが、その前に一度、抗菌薬全体の地図を整理しておきましょう。なぜだと思いますか。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">セファロスポリンが、βラクタム系という大きな枠組みの中のどこに位置するのかが分からないと、丸暗記になってしまうからでしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。個々の薬剤名を覚える前に、「どの系統に属し、近縁の系統に何があるか」という地図を持っておくと、新しい薬剤に出会ったときにも、似た系統の知識から類推できます。今日はその地図を一緒に作りましょう。</div>
+    </div>
+  </div>
+
+  <!-- II. βラクタム系の全体像 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">βラクタム系薬の全体像</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">βラクタム系には、ペニシリンとセファロスポリン以外にも色々ありますよね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">はい。βラクタム環を共通骨格に持つ薬剤群として、まとめて整理するとこうなります。</div>
+    </div>
+  </div>
+
+  <div class="map">
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">A</span>ペニシリン系</div>
+      <div class="map-row"><span class="map-sub">古典的ペニシリン</span><span class="map-items"><span class="item">ペニシリンG</span><span class="item">ペニシリンV</span></span></div>
+      <div class="map-row"><span class="map-sub">アミノペニシリン</span><span class="map-items"><span class="item">アンピシリン</span><span class="item">アモキシシリン</span></span></div>
+      <div class="map-row"><span class="map-sub">アシルアミノペニシリン</span><span class="map-items"><span class="item">ピペラシリン</span></span></div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">B</span>セフェム系</div>
+      <div class="map-row"><span class="map-sub">セファロスポリン</span><span class="map-items"><span class="item">第一世代〜第四世代</span><span class="item">セフィデロコル</span></span></div>
+      <div class="map-row"><span class="map-sub">セファマイシン</span><span class="map-items"><span class="item">セフメタゾール</span><span class="item">セフォキシチン</span><span class="item">セフォテタン</span></span></div>
+      <div class="map-row"><span class="map-sub">オキサセフェム</span><span class="map-items"><span class="item">フロモキセフ</span><span class="item">ラタモキセフ</span></span></div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">C</span>カルバペネム系・ペネム系</div>
+      <div class="map-row"><span class="map-sub">カルバペネム系</span><span class="map-items"><span class="item">メロペネムなど</span></span></div>
+      <div class="map-row"><span class="map-sub">ペネム系</span><span class="map-items"><span class="item">ファロペネムなど</span></span></div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">D</span>βラクタマーゼ阻害薬配合剤</div>
+      <div class="map-row"><span class="map-sub">従来型阻害薬</span><span class="map-items"><span class="item">クラブラン酸</span><span class="item">スルバクタム</span><span class="item">タゾバクタム</span></span></div>
+      <div class="map-row"><span class="map-sub">新しい阻害薬</span><span class="map-items"><span class="item">アビバクタム</span><span class="item">バボルバクタム</span><span class="item">レレバクタム</span></span></div>
+    </div>
+    <div class="map-group">
+      <div class="map-group-title"><span class="tag">E</span>モノバクタム系</div>
+      <div class="map-row"><span class="map-sub">単環性βラクタム</span><span class="map-items"><span class="item">アズトレオナム</span></span></div>
+    </div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">セファマイシンとオキサセフェムが、セファロスポリンとは別の枠に入っているのが印象的です。前回までの講義で「便宜上の分類」と「厳密な分類」を区別する大切さを学びました。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">まさにその通りです。セフェム系という大きな括りの中に、セファロスポリン・セファマイシン・オキサセフェムという3つの系統があり、「世代」という分類概念は本来このうちセファロスポリンにのみ定義されるものでした。地図上での位置づけと、便宜的な呼び方を区別して理解しておくことが重要です。</div>
+    </div>
+  </div>
+
+  <!-- III. βラクタム以外の主要系統 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">βラクタム以外の主要系統</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">βラクタム系以外の主要な系統も整理してほしいです。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">代表的なものとして、フルオロキノロン系、マクロライド系、アミノグリコシド系、テトラサイクリン系があります。これらはβラクタム系とは作用機序がまったく異なる系統で、それぞれDNA複製、タンパク質合成（リボソーム50Sサブユニット）、タンパク質合成（リボソーム30Sサブユニット、殺菌性）、タンパク質合成（リボソーム30Sサブユニット、静菌性）という形で標的が異なります。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">βラクタム系が効かない菌に対して、これらの系統が代替になることが多いのも、標的が違うからですね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。作用標的が異なれば、耐性機構も異なります。この視点は後でもう一度触れます。</div>
+    </div>
+  </div>
+
+  <!-- IV. 抗MRSA薬とその他の特殊な抗菌薬 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">抗MRSA薬とその他の特殊な抗菌薬</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">MRSAにはβラクタム系がほぼ無効でしたよね。代わりに使う薬剤群も整理してください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        抗MRSA薬としては、グリコペプチド系（バンコマイシン、テイコプラニン）、オキサゾリジノン系（リネゾリド）、そしてアミノグリコシド系の一種であるアルベカシン、環状リポペプチドのダプトマイシンが代表的です。
+      </div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">そのほかに、特定の場面で使う特殊な抗菌薬もありますよね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        はい。クリンダマイシン、コリスチン、チゲサイクリン、メトロニダゾール、ST合剤、ホスホマイシン、キヌプリスチン/ダルホプリスチン、クロラムフェニコール、フィダキソマイシンなどが、それぞれ独自の位置づけを持っています。系統だてて分類しきれない薬剤も多いので、「その他」として一括りにせず、一つひとつどんな場面で使われるかを個別に押さえていく必要があります。
+      </div>
+    </div>
+  </div>
+
+  <!-- V. 用途による分類軸 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">系統とは別のもう一つの分類軸</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">系統による分類のほかに、別の切り口もあるのでしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">あります。臨床現場や抗菌薬適正使用の文脈では、化学構造による系統分類とは別に、「使われ方」による分類軸も重要です。</div>
+    </div>
+  </div>
+
+  <div class="axis-grid">
+    <div class="axis-card">
+      <div class="axis-title">特定抗菌薬</div>
+      <div class="axis-desc">特定の限られた病原体や状況に絞って使用される薬剤。使用に届出や許可を要する施設が多い。</div>
+    </div>
+    <div class="axis-card">
+      <div class="axis-title">広域抗菌薬</div>
+      <div class="axis-desc">グラム陽性・陰性、好気性・嫌気性など広範囲をカバーする薬剤。エンピリック治療で重宝される一方、耐性誘導や正常細菌叢への影響に注意。</div>
+    </div>
+    <div class="axis-card">
+      <div class="axis-title">抗MRSA薬</div>
+      <div class="axis-desc">メチシリン耐性黄色ブドウ球菌に対して活性を持つ薬剤群。使用には適応の確認が重要。</div>
+    </div>
+    <div class="axis-card">
+      <div class="axis-title">抗AMR薬</div>
+      <div class="axis-desc">多剤耐性菌（AMR菌）感染症を念頭に開発・温存される薬剤。安易な使用は新たな耐性を生むため温存が原則。</div>
+    </div>
+    <div class="axis-card">
+      <div class="axis-title">抗結核薬</div>
+      <div class="axis-desc">抗酸菌である結核菌に特化した薬剤群。一般細菌用の抗菌薬とは作用機序・使用法が大きく異なる。</div>
+    </div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">同じ薬剤でも、系統分類では「セフェム系」、使われ方分類では「広域抗菌薬」というように、二つの軸で同時に説明できるということですね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。一つの薬剤を一つのラベルだけで覚えるのではなく、複数の軸から立体的に理解することが大切です。</div>
+    </div>
+  </div>
+
+  <!-- VI. 抗菌薬を学ぶ上でのポイント -->
+  <div class="section-divider">
+    <div class="section-num">Ⅵ</div>
+    <div class="section-title">抗菌薬を学ぶ上でのポイント</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">最後に、これから各論を学んでいくにあたって、心構えのようなものを教えてください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">いくつか大事な視点があります。まず、<strong>分類と作用機序・作用標的はセットで理解してください</strong>。そして作用標的を理解することは、裏を返せば耐性機構を理解することでもあります。標的が分かれば、「ここが変異すれば効かなくなる」「ここを分解されれば効かなくなる」という耐性のロジックも自然に見えてきます。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">抗菌薬を覚えることと、細菌を覚えることは、表裏一体ということですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">まさにそうです。抗菌薬を知ることは、結局のところ細菌をよく知ることに他なりません。逆に言えば、細菌についての理解が乏しいままだと、抗菌薬の知識は文脈のない暗記の羅列になってしまいます。スペクトル（どの菌に効くか）が分かれば、ある程度は適応も推測できます。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">「ある程度」とおっしゃったのが気になります。例外があるということでしょうか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">鋭いですね。同じ起炎菌でも、<strong>感染している臓器によって適切な抗菌薬は異なります</strong>。薬剤が髄液や前立腺、骨、胆汁などにどの程度移行するかは薬剤ごとに大きく違うため、「この菌にはこの抗菌薬」と単純化しすぎず、必ず感染臓器とセットで考える習慣をつけてください。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">スペクトルと臓器移行性のほかにも、実臨床で押さえるべきことはありますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">たくさんあります。投与経路、用法・用量、副作用、注意点や禁忌は当然として、PK/PD（薬物動態・薬力学）、バイオアベイラビリティ（経口薬の生体内利用率）、選択毒性（ヒトの細胞に対する毒性の低さ）、TDM（治療薬物モニタリング）の要否、薬剤費、そして出荷停止などの事態に備えた代替手段まで、知っておくべき要素は多岐にわたります。各論を学ぶときは、常にこれらの項目に立ち返って整理する習慣をつけてください。</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="note-label">各論を学ぶときのチェックリスト</div>
+    <p>一つの抗菌薬を学ぶときは、次の項目で整理すると知識が立体的になります。</p>
+    <ul>
+      <li>系統分類と作用機序・作用標的（＝耐性機構の裏返し）</li>
+      <li>抗菌スペクトル（どの菌に効くか）</li>
+      <li>感染臓器ごとの移行性・適応（同じ菌でも臓器が違えば選択が変わる）</li>
+      <li>投与経路、用法・用量</li>
+      <li>副作用、注意点・禁忌</li>
+      <li>PK/PD、バイオアベイラビリティ、選択毒性</li>
+      <li>TDMの要否、薬剤費、出荷停止時の代替手段</li>
+    </ul>
+  </div>
+
+  <div class="pearl">
+    <div class="pearl-label">臨床メモ — 各論に入る前に持っておきたい視点</div>
+    <p>① βラクタム系の中でも、セファロスポリン・セファマイシン・オキサセフェムは別系統であり、「世代」分類は本来セファロスポリンのみの概念。</p>
+    <p>② 抗菌薬を知ることは細菌を知ること。スペクトルが分かれば適応はある程度わかるが、感染臓器によって最適な薬剤は変わる。</p>
+    <p>③ 実際の処方判断には、スペクトル以外にPK/PD・副作用・禁忌・TDM・費用・代替手段まで含めた総合的な視点が必要。</p>
+  </div>
+
+  <nav class="pagenav">
+    <span class="disabled"><small>← 前へ</small>（シリーズの最初です）</span>
+    <a class="toc" href="antimicrobial_series_index.html">目次</a>
+    <a class="next" href="cephalosporin_1st_gen_dialogue.html"><small>次へ →</small>セファロスポリン 第一世代</a>
+  </nav>
+
+  <footer>
+    本テキストは AI（Claude, Anthropic）を用いて作成されました。内容には誤りが含まれる可能性があります。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。<br>
+    二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。
+  </footer>
+
+</div>
+</body>
+</html>

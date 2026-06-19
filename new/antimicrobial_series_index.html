@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抗菌薬学シリーズ 目次</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --ink: #1B2733;
+    --ink-soft: #4A5A68;
+    --line: #DCE4E9;
+
+    --prof: #2C5F6F;
+    --prof-bg: #EAF2F3;
+
+    --map-line: #D6DEE5;
+
+    --done-bg: #E7F2EE;
+    --done-ink: #1F6E54;
+    --plan-bg: #FBF1E2;
+    --plan-ink: #8A5A12;
+    --idea-bg: #F0F1F3;
+    --idea-ink: #707C86;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:48px 20px 60px;
+  }
+
+  header.hero{
+    text-align:center;
+    margin-bottom:40px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--prof);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(26px,5.5vw,36px);
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .subhead{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  .legend{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:20px;
+    font-size:12.5px;
+  }
+  .legend-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:var(--ink-soft);
+  }
+  .legend .badge{ position:static; }
+
+  .part{
+    margin:42px 0 14px;
+  }
+  .part-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:17px;
+    font-weight:700;
+    color:var(--prof);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:4px;
+  }
+  .part-title .num{
+    width:28px;height:28px;
+    border-radius:50%;
+    background:var(--prof);
+    color:#fff;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .part-desc{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 14px 38px;
+  }
+
+  .chapters{
+    border:1px solid var(--map-line);
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--surface);
+    box-shadow:0 2px 8px rgba(20,40,60,0.04);
+  }
+  .chapter{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 18px;
+    border-bottom:1px solid #EEF2F5;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .chapter:last-child{ border-bottom:none; }
+  a.chapter:hover{
+    background:#F5F9FA;
+  }
+  .chapter .ttl{
+    flex:1;
+    font-size:15px;
+    font-weight:700;
+  }
+  .chapter .desc{
+    display:block;
+    font-weight:400;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .badge{
+    flex-shrink:0;
+    font-size:11px;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:12px;
+    white-space:nowrap;
+  }
+  .badge.done{ background:var(--done-bg); color:var(--done-ink); }
+  .badge.plan{ background:var(--plan-bg); color:var(--plan-ink); }
+  .badge.idea{ background:var(--idea-bg); color:var(--idea-ink); }
+
+  .chapter.disabled{
+    color:var(--ink-soft);
+    cursor:default;
+  }
+  .chapter.disabled .ttl{ font-weight:700; color:var(--ink-soft); }
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:#8A99A6;
+    line-height:1.7;
+  }
+
+  @media (max-width:480px){
+    .page{padding:32px 14px 40px;}
+    .chapter{padding:12px 14px;}
+    .part-desc{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="eyebrow">感染症学演習</div>
+    <h1>抗菌薬学シリーズ 目次</h1>
+    <p class="subhead">対話で学ぶ抗菌薬 — 全体地図と進捗</p>
+    <div class="legend">
+      <span class="legend-item"><span class="badge done">完成</span>読める回</span>
+      <span class="legend-item"><span class="badge plan">作成予定</span>近日公開</span>
+      <span class="legend-item"><span class="badge idea">未着手</span>将来構想</span>
+    </div>
+  </header>
+
+  <!-- 総論 -->
+  <div class="part">
+    <div class="part-title"><span class="num">1</span>総論</div>
+    <p class="part-desc">各論に入る前に持っておきたい地図。</p>
+  </div>
+  <div class="chapters">
+    <a class="chapter" href="antimicrobial_overview_dialogue.html">
+      <div class="ttl">抗菌薬の全体像<span class="desc">分類体系の地図、学び方のポイント</span></div>
+      <span class="badge done">完成</span>
+    </a>
+    <div class="chapter disabled">
+      <div class="ttl">βラクタム系総論<span class="desc">ペニシリン・セフェム・カルバペネム等の共通点</span></div>
+      <span class="badge plan">作成予定</span>
+    </div>
+  </div>
+
+  <!-- βラクタム系 -->
+  <div class="part">
+    <div class="part-title"><span class="num">2</span>βラクタム系 — ペニシリン系</div>
+    <p class="part-desc">古典的ペニシリン／アミノペニシリン／アシルアミノペニシリン。</p>
+  </div>
+  <div class="chapters">
+    <div class="chapter disabled">
+      <div class="ttl">ペニシリン系<span class="desc">古典的・アミノ・アシルアミノペニシリン</span></div>
+      <span class="badge plan">作成予定</span>
+    </div>
+  </div>
+
+  <div class="part">
+    <div class="part-title"><span class="num">3</span>βラクタム系 — セフェム系</div>
+    <p class="part-desc">セファロスポリン・セファマイシン・オキサセフェムの3系統。「世代」分類は本来セファロスポリンのみの概念。</p>
+  </div>
+  <div class="chapters">
+    <a class="chapter" href="cephalosporin_1st_gen_dialogue.html">
+      <div class="ttl">セファロスポリン 第一世代<span class="desc">セファゾリン・セファレキシン、MSSAの第一選択</span></div>
+      <span class="badge done">完成</span>
+    </a>
+    <a class="chapter" href="cephalosporin_2nd_gen_cefmetazole_dialogue.html">
+      <div class="ttl">セファロスポリン 第二世代＋セファマイシン<span class="desc">セフロキシム・セファクロル／セフメタゾールの位置づけ</span></div>
+      <span class="badge done">完成</span>
+    </a>
+    <a class="chapter" href="cephalosporin_3rd_gen_oxacephem_dialogue.html">
+      <div class="ttl">セファロスポリン 第三世代＋オキサセフェム<span class="desc">抗緑膿菌活性の有無、フロモキセフ・ラタモキセフの使いどころ</span></div>
+      <span class="badge done">完成</span>
+    </a>
+    <a class="chapter" href="cephalosporin_4th_gen_cefepime_dialogue.html">
+      <div class="ttl">セファロスポリン 第四世代（セフェピム）<span class="desc">緑膿菌＋グラム陽性菌の両カバー、神経毒性</span></div>
+      <span class="badge done">完成</span>
+    </a>
+    <div class="chapter disabled">
+      <div class="ttl">セフィデロコル<span class="desc">シデロフォアセファロスポリン</span></div>
+      <span class="badge idea">未着手</span>
+    </div>
+  </div>
+
+  <div class="part">
+    <div class="part-title"><span class="num">4</span>βラクタム系 — その他</div>
+    <p class="part-desc">カルバペネム・ペネム・モノバクタム・βラクタマーゼ阻害薬配合剤。</p>
+  </div>
+  <div class="chapters">
+    <div class="chapter disabled">
+      <div class="ttl">カルバペネム系・ペネム系<span class="desc">最広域スペクトル、温存すべき理由</span></div>
+      <span class="badge plan">作成予定</span>
+    </div>
+    <div class="chapter disabled">
+      <div class="ttl">モノバクタム系<span class="desc">アズトレオナム、ペニシリンアレルギーでの位置づけ</span></div>
+      <span class="badge plan">作成予定</span>
+    </div>
+    <div class="chapter disabled">
+      <div class="ttl">βラクタマーゼ阻害薬配合剤<span class="desc">従来型阻害薬と新しい阻害薬</span></div>
+      <span class="badge idea">未着手</span>
+    </div>
+  </div>
+
+  <!-- その他系統 -->
+  <div class="part">
+    <div class="part-title"><span class="num">5</span>βラクタム以外の主要系統</div>
+    <p class="part-desc">フルオロキノロン・マクロライド・アミノグリコシド・テトラサイクリンなど。</p>
+  </div>
+  <div class="chapters">
+    <div class="chapter disabled">
+      <div class="ttl">フルオロキノロン系・マクロライド系・アミノグリコシド系・テトラサイクリン系<span class="desc">作用標的の違いと使い分け</span></div>
+      <span class="badge idea">未着手</span>
+    </div>
+  </div>
+
+  <!-- 抗MRSA薬・特殊抗菌薬 -->
+  <div class="part">
+    <div class="part-title"><span class="num">6</span>抗MRSA薬・特殊な抗菌薬</div>
+    <p class="part-desc">グリコペプチド系、オキサゾリジノン系、その他の個性的な薬剤群。</p>
+  </div>
+  <div class="chapters">
+    <div class="chapter disabled">
+      <div class="ttl">抗MRSA薬<span class="desc">グリコペプチド系・オキサゾリジノン系・アルベカシン・ダプトマイシン</span></div>
+      <span class="badge idea">未着手</span>
+    </div>
+    <div class="chapter disabled">
+      <div class="ttl">その他の特殊な抗菌薬<span class="desc">クリンダマイシン・コリスチン・メトロニダゾール・ST合剤など</span></div>
+      <span class="badge idea">未着手</span>
+    </div>
+  </div>
+
+  <!-- AMR・適正使用 -->
+  <div class="part">
+    <div class="part-title"><span class="num">7</span>AMR・抗菌薬適正使用</div>
+    <p class="part-desc">薬剤耐性菌、抗AMR薬、アンチバイオグラム、デ・エスカレーションなど。</p>
+  </div>
+  <div class="chapters">
+    <div class="chapter disabled">
+      <div class="ttl">AMR・適正使用（構想中）<span class="desc">今後のトピックを検討中</span></div>
+      <span class="badge idea">未着手</span>
+    </div>
+  </div>
+
+  <!-- 細菌学各論 -->
+  <div class="part">
+    <div class="part-title"><span class="num">8</span>細菌学各論</div>
+    <p class="part-desc">菌種ごとの特徴、抗菌薬選択の基礎となる微生物学。</p>
+  </div>
+  <div class="chapters">
+    <div class="chapter disabled">
+      <div class="ttl">細菌学各論（構想中）<span class="desc">今後のトピックを検討中</span></div>
+      <span class="badge idea">未着手</span>
+    </div>
+  </div>
+
+  <footer>
+    本テキストは AI（Claude, Anthropic）を用いて作成されました。内容には誤りが含まれる可能性があります。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。<br>
+    二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。
+  </footer>
+
+</div>
+</body>
+</html>

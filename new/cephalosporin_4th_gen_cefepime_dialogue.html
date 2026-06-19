@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対話で学ぶ 第四世代セファロスポリン系薬(セフェピム)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --ink: #1B2733;
+    --ink-soft: #4A5A68;
+    --line: #DCE4E9;
+
+    --prof: #2C5F6F;
+    --prof-bg: #EAF2F3;
+    --s1: #C97B3D;
+    --s1-bg: #FBF1E6;
+    --s2: #5B7553;
+    --s2-bg: #EEF3EC;
+    --s3: #7A5A8C;
+    --s3-bg: #F3EEF6;
+
+    --pearl-bg: #FCEFD6;
+    --pearl-line: #D8A24B;
+
+    --note-bg: #EAEFF7;
+    --note-line: #9DB3CE;
+
+    --warn-bg: #FBEAEA;
+    --warn-line: #C76464;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:760px;
+    margin:0 auto;
+    padding:48px 20px 32px;
+  }
+
+  header.hero{
+    text-align:center;
+    margin-bottom:40px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--prof);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(24px,5vw,34px);
+    font-weight:700;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .subhead{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0;
+  }
+
+  .cast{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .cast-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+
+  .section-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:46px 0 22px;
+  }
+  .section-divider:first-of-type{margin-top:0;}
+  .section-num{
+    font-family:"Shippori Mincho",serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    background:var(--prof);
+    width:30px;height:30px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .section-title{
+    font-family:"Shippori Mincho",serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .section-divider .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .msg{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .avatar{
+    flex-shrink:0;
+    width:38px;height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+  }
+  .bubble{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent,#888);
+    border-radius:4px 12px 12px 12px;
+    padding:14px 18px;
+    flex:1;
+  }
+  .name{
+    font-size:12.5px;
+    font-weight:700;
+    margin-bottom:5px;
+    color:var(--accent,#888);
+    letter-spacing:0.02em;
+  }
+  .text{
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .text strong{ color:var(--ink); }
+  .text em{ font-style:italic; }
+
+  .prof .avatar{background:var(--prof);}
+  .prof .bubble{--accent:var(--prof); background:var(--prof-bg);}
+  .s1 .avatar{background:var(--s1);}
+  .s1 .bubble{--accent:var(--s1); background:var(--s1-bg);}
+  .s2 .avatar{background:var(--s2);}
+  .s2 .bubble{--accent:var(--s2); background:var(--s2-bg);}
+  .s3 .avatar{background:var(--s3);}
+  .s3 .bubble{--accent:var(--s3); background:var(--s3-bg);}
+
+  table.dose{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 4px;
+    font-size:14px;
+  }
+  table.dose th, table.dose td{
+    border:1px solid var(--line);
+    padding:7px 10px;
+    text-align:left;
+  }
+  table.dose th{
+    background:#F1F5F7;
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  .pearl{
+    position:relative;
+    margin:34px 4px 40px;
+    background:var(--pearl-bg);
+    border:1px dashed var(--pearl-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+    transform:rotate(-0.6deg);
+    box-shadow:2px 4px 10px rgba(0,0,0,0.06);
+  }
+  .pearl::before{
+    content:"";
+    position:absolute;
+    top:-7px; left:28px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#B23A48;
+    box-shadow:0 1px 2px rgba(0,0,0,0.3);
+  }
+  .pearl-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8A5A12;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .pearl p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#3B2E1A;
+  }
+  .pearl p:last-child{margin-bottom:0;}
+
+  .note{
+    margin:34px 4px 40px;
+    background:var(--note-bg);
+    border:1px solid var(--note-line);
+    border-left:5px solid var(--note-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .note-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#28466B;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .note p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#23344A;
+  }
+  .note p:last-child{margin-bottom:0;}
+
+  .warn{
+    margin:34px 4px 40px;
+    background:var(--warn-bg);
+    border:1px solid var(--warn-line);
+    border-left:5px solid var(--warn-line);
+    border-radius:2px;
+    padding:22px 24px 20px;
+  }
+  .warn-label{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:14px;
+    color:#8C3838;
+    margin-bottom:8px;
+    letter-spacing:0.05em;
+  }
+  .warn p{
+    margin:0 0 8px;
+    font-size:15.5px;
+    color:#5E2828;
+  }
+  .warn p:last-child{margin-bottom:0;}
+
+  .warn ul{
+    margin:6px 0 8px;
+    padding-left:20px;
+  }
+  .warn li{
+    font-size:15px;
+    color:#5E2828;
+    margin-bottom:3px;
+  }
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:#8A99A6;
+    line-height:1.7;
+  }
+
+  .breadcrumb{
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin:0 0 22px;
+    letter-spacing:0.02em;
+  }
+  .breadcrumb a{
+    color:var(--prof);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .breadcrumb a:hover{
+    border-bottom-color:var(--prof);
+  }
+  .breadcrumb .sep{
+    margin:0 6px;
+    color:#B7C2CB;
+  }
+  .breadcrumb .current{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  .pagenav{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:10px;
+    margin:46px 4px 0;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .pagenav a, .pagenav .disabled{
+    flex:1;
+    text-decoration:none;
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--surface);
+  }
+  .pagenav a{
+    color:var(--prof);
+    font-weight:700;
+  }
+  .pagenav a:hover{
+    border-color:var(--prof);
+  }
+  .pagenav .disabled{
+    color:#B7C2CB;
+    cursor:default;
+  }
+  .pagenav .next{ text-align:right; }
+  .pagenav .toc{
+    flex:0 0 auto;
+    text-align:center;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .pagenav small{
+    display:block;
+    font-weight:400;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+
+  @media (max-width:480px){
+    .pagenav{flex-direction:column;}
+    .pagenav .next{text-align:left;}
+    .page{padding:32px 14px 24px;}
+    .avatar{width:32px;height:32px;font-size:12px;}
+    .bubble{padding:12px 14px;}
+    .text{font-size:14.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb"><a href="antimicrobial_series_index.html">抗菌薬学シリーズ</a><span class="sep">＞</span>βラクタム系<span class="sep">＞</span>セファロスポリン系<span class="sep">＞</span><span class="current">第四世代</span></nav>
+
+  <header class="hero">
+    <div class="eyebrow">感染症学演習 — 抗菌薬各論</div>
+    <h1>対話で学ぶ<br>第四世代セファロスポリン系薬<br>セフェピム</h1>
+    <p class="subhead">緑膿菌とグラム陽性菌の両カバー、そして神経毒性</p>
+    <div class="cast">
+      <div class="cast-item"><span class="dot" style="background:var(--prof)"></span>教授</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s1)"></span>林さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s2)"></span>中村さん</div>
+      <div class="cast-item"><span class="dot" style="background:var(--s3)"></span>小川さん</div>
+    </div>
+  </header>
+
+  <!-- I. 位置づけ・抗菌スペクトル -->
+  <div class="section-divider">
+    <div class="section-num">Ⅰ</div>
+    <div class="section-title">第四世代の位置づけと抗菌スペクトル</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">前回、第三世代は抗緑膿菌活性の有無で二分されると学びました。セフタジジムは緑膿菌に強いがグラム陽性球菌は弱い、セフトリアキソンはその逆でした。第四世代のセフェピムはどう違いますか。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">セフェピムはそのトレードオフを解消して、緑膿菌にもグラム陽性菌にも、両方に強い薬という理解でよいですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        その理解で正しいです。セフェピムは<em>Pseudomonas aeruginosa</em>（緑膿菌）に対してセフタジジムとほぼ同等の活性を持ちながら、メチシリン感受性<em>Staphylococcus aureus</em>や肺炎球菌などのグラム陽性菌に対しては、セフタジジムより優れた活性を示します。<br>
+        さらに、エンテロバクター属、大腸菌、肺炎桿菌などの腸内細菌科に対する活性も、セフォタキシムやセフタジジムより優れています。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">なぜそんなに広域なんですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">構造上、3位に四級化されたN-メチルピロリジン基を持ち、分子全体が双性イオン性になっています。これによりグラム陰性菌の外膜を素早く透過できる点が、広域スペクトルの理由の一つです。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">逆に効かない菌はありますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">腸球菌、メチシリン耐性黄色ブドウ球菌（MRSA）、そして<em>Stenotrophomonas maltophilia</em>の多くの株には無効です。「広域＝万能」ではない点は今までの世代と同じです。</div>
+    </div>
+  </div>
+
+  <!-- II. 適応 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅱ</div>
+    <div class="section-title">適応</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">実際にはどんな場面で使われますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        中等症〜重症の肺炎、尿路感染症（非複雑性・複雑性）、非複雑性皮膚・軟部組織感染症、複雑性腹腔内感染症（嫌気性菌をカバーするためメトロニダゾールと併用）、嚢胞性線維症患者の緑膿菌肺感染症などです。
+      </div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">発熱性好中球減少症にも使われますよね。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">そのとおりです。緑膿菌を含む広域なグラム陰性菌カバーが必要な発熱性好中球減少症は、セフェピムの代表的な適応のひとつです。</div>
+    </div>
+  </div>
+
+  <!-- III. 用法用量 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅲ</div>
+    <div class="section-title">用法用量</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">投与量を整理してください。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        <table class="dose">
+          <tr><th>適応</th><th>重症度</th><th>用量・間隔</th></tr>
+          <tr><td rowspan="2">肺炎</td><td>中等症</td><td>1〜2 g を12時間毎</td></tr>
+          <tr><td>重症・緑膿菌による場合</td><td>2 g を8時間毎</td></tr>
+          <tr><td>発熱性好中球減少症</td><td>―</td><td>2 g を8時間毎</td></tr>
+          <tr><td>尿路感染症</td><td>重症（複雑性）</td><td>2 g を12時間毎</td></tr>
+          <tr><td>複雑性腹腔内感染症</td><td>―</td><td>2 g を8〜12時間毎（メトロニダゾール併用）</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">腎機能障害患者ではどう調整しますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">クレアチニンクリアランス60 mL/min以下では用量調整が必要です。初回負荷量は通常用量のままで、維持量を腎機能に応じて減量します。これは後で話す副作用と密接に関係するので、よく覚えておいてください。</div>
+    </div>
+  </div>
+
+  <!-- IV. 副作用：神経毒性 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅳ</div>
+    <div class="section-title">副作用 — セフェピム誘発性神経毒性</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">セフェピムで最も注意すべき副作用は何ですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">全体としては忍容性は良好ですが、最も重要なのは<strong>セフェピム誘発性神経毒性（CIN）</strong>です。下痢や悪心などの一般的なセファロスポリンの副作用以上に、これは第四世代を特徴づける有害事象として必ず覚えておいてください。</div>
+    </div>
+  </div>
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">どんな症状が出るのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">最も頻度が高いのは<strong>意識変容・脳症</strong>（約93%）です。そのほかミオクローヌス（約37%）、非痙攣性てんかん重積状態（約28%）、痙攣（約15%）、昏睡（約6%）なども報告されています。発症は投与開始から中央値4日前後です。</div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">どんな患者さんでリスクが高いのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">最大のリスク因子は<strong>腎機能障害</strong>で、報告例の約90%に認められます。あわせて、適切な用量調整がされていない過量投与（約41%）、脳疾患の既往、高齢であることもリスクを高めます。2012年にはFDAも、特に腎機能障害患者における痙攣・てんかん重積状態のリスクと適切な用量調整の必要性について注意喚起しています。</div>
+    </div>
+  </div>
+  <div class="msg s1">
+    <div class="avatar">林</div>
+    <div class="bubble"><div class="name">林さん</div>
+      <div class="text">起きてしまった場合の対応は？</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">セフェピムの減量または中止により、約97.5%の症例で症状が改善し、改善までの期間は中央値3日です。CINによる死亡は報告されていません。原因不明の意識変容を見たら、まず投与中の薬剤、特にセフェピムと腎機能を確認する習慣をつけてください。</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-label">注意 — セフェピム誘発性神経毒性(CIN)</div>
+    <p>主なリスク因子:</p>
+    <ul>
+      <li>腎機能障害（約90%の症例に存在）</li>
+      <li>腎機能に見合わない過量投与</li>
+      <li>脳疾患の既往、高齢</li>
+    </ul>
+    <p>腎機能障害患者にセフェピムを投与する際は、必ず腎機能に応じた用量調整を行い、原因不明の意識変容・けいれん様症状が出現した場合はCINを鑑別に挙げる。</p>
+  </div>
+
+  <!-- V. 耐性 -->
+  <div class="section-divider">
+    <div class="section-num">Ⅴ</div>
+    <div class="section-title">耐性機構 — AmpCに対する安定性</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="msg s3">
+    <div class="avatar">小</div>
+    <div class="bubble"><div class="name">小川さん</div>
+      <div class="text">前回、AmpCβラクタマーゼ産生菌の話がありましたが、セフェピムはどう違うのですか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">
+        良い着眼点です。第三世代セファロスポリン（セフトリアキソン、セフォタキシム、セフタジジム）は、AmpC誘導性は弱いものの、AmpC酵素そのものによる加水分解には感受性があります。そのため、<em>Enterobacter cloacae</em>のような中等度リスクのAmpC産生菌に対しては、治療中に耐性化することがありました。<br>
+        一方セフェピムは、AmpCに対して<strong>弱い誘導性かつ加水分解への耐性</strong>を両立しています。安定なアシル酵素複合体を形成するため、AmpC産生腸内細菌科細菌に対して一般的に有効です。
+      </div>
+    </div>
+  </div>
+  <div class="msg s2">
+    <div class="avatar">中</div>
+    <div class="bubble"><div class="name">中村さん</div>
+      <div class="text">ESBL産生菌にも効きますか。</div>
+    </div>
+  </div>
+  <div class="msg prof">
+    <div class="avatar">教</div>
+    <div class="bubble"><div class="name">教授</div>
+      <div class="text">セフォタキシムやセフタジジムに耐性を示す腸内細菌科に対しても活性を示すことがあります。ただし、近年はセフタジジム・アビバクタムなど新規βラクタム/βラクタマーゼ阻害薬配合剤も登場しており、これらはカルバペネム耐性菌治療のために温存すべき位置づけにあることも知っておいてください。</div>
+    </div>
+  </div>
+
+  <div class="pearl">
+    <div class="pearl-label">臨床メモ — 試験で問われやすいポイント</div>
+    <p>① セフェピムは<strong>緑膿菌とグラム陽性菌の両方</strong>に強い、これまでの世代のトレードオフを解消した薬剤。</p>
+    <p>② 最大の注意点は<strong>セフェピム誘発性神経毒性（CIN）</strong>。腎機能障害患者での過量投与が最大のリスク因子で、意識変容が最も多い症状。減量・中止で多くが改善する。</p>
+    <p>③ AmpCβラクタマーゼによる加水分解に耐性であり、第三世代で問題となったAmpC産生菌（<em>Enterobacter cloacae</em>など）にも安定して有効。</p>
+  </div>
+
+  <nav class="pagenav">
+    <a href="cephalosporin_3rd_gen_oxacephem_dialogue.html"><small>← 前へ</small>セファロスポリン 第三世代</a>
+    <a class="toc" href="antimicrobial_series_index.html">目次</a>
+    <span class="disabled next"><small>次へ →</small>カルバペネム・ペネム系（作成予定）</span>
+  </nav>
+
+  <footer>
+    本テキストは AI（Claude, Anthropic）を用いて作成されました。内容には誤りが含まれる可能性があります。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。<br>
+    二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。
+  </footer>
+
+</div>
+</body>
+</html>
