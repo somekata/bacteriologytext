@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>
+      Chapter 02B：グラム陰性桿菌（腸内細菌目・ビブリオ目・エロモナス目）
+    </title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="chapter.css" />
+    <style>
+      /* Chapter02B 用の補足 */
+      main.container > .card { margin-bottom: 18px; }
+      .card ul ul { margin-left: 1.4em; margin-top: 4px; }
+      .flow { display: grid; gap: 10px; }
+      .flow .step {
+        background: #f5fbf8;
+        border: 1px solid #cfeadf;
+        border-radius: 12px;
+        padding: 10px 14px;
+      }
+      .flow .arrow { text-align: center; color: var(--accent); font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <header class="chapter-hero">
+      <h1>Chapter 02B：グラム陰性桿菌（腸内細菌目・ビブリオ目・エロモナス目）</h1>
+      <p class="subtitle">
+        <em>Escherichia</em> / <em>Klebsiella</em> / <em>Proteus</em> ／
+        <em>Vibrio</em> ／ <em>Aeromonas</em> ＋ β-ラクタマーゼ（Ambler分類）
+      </p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">ポータル</a></li>
+        <li><a href="chap02A_gnr_small.html">Chapter02A</a></li>
+        <li><a href="chap02C_nonfermenters.html">Chapter02C</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <!-- 学習目標 -->
+      <section class="card">
+        <h2>学習目標（Learning Objectives）</h2>
+        <ul>
+          <li>腸内細菌目の共通性状（通性嫌気性・ブドウ糖発酵・オキシダーゼ陰性）を説明できる。</li>
+          <li>
+            <em>Escherichia coli</em>・<em>Klebsiella pneumoniae</em>・<em>Proteus mirabilis</em>
+            の特徴と主な感染症を述べられる。
+          </li>
+          <li>
+            <em>Vibrio</em> 属（コレラ菌・腸炎ビブリオ・<em>V. vulnificus</em>）と
+            <em>Aeromonas</em> 属の特徴・感染経路・臨床像を区別できる。
+          </li>
+          <li>オキシダーゼ試験と患者背景（海水／淡水）から3グループを鑑別できる。</li>
+          <li>
+            ESBL・AmpC・カルバペネマーゼの違いと、Ambler分類（クラスA〜D）上の位置づけを説明できる。
+          </li>
+        </ul>
+        <p class="note">
+          ※ 感染症法の類型は学習の観点で触れます。正式運用は各年版の厚労省資料で必ず確認。
+        </p>
+      </section>
+
+      <!-- 全体像 -->
+      <section class="card">
+        <h2>3グループの全体像と鑑別</h2>
+        <p>
+          いずれも臨床で頻繁に遭遇するグラム陰性桿菌（GNR）。まず<strong>ブドウ糖を発酵するか</strong>、
+          次に<strong>オキシダーゼ試験</strong>、そして<strong>どこで感染したか（海水／淡水／腸内由来）</strong>で絞り込む。
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 18%">グループ</th>
+              <th>オキシダーゼ</th>
+              <th>生息環境</th>
+              <th>代表菌</th>
+              <th>キーワード</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>腸内細菌目</strong><br />Enterobacterales</td>
+              <td><strong>陰性</strong></td>
+              <td>ヒト・動物の腸管、環境</td>
+              <td>
+                <em>E. coli</em>、<em>K. pneumoniae</em>、<em>Proteus</em>、<em>Salmonella</em>、<em>Shigella</em>
+              </td>
+              <td>
+                <span class="pill">ESBL</span><span class="pill">CRE/CPE</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>ビブリオ目</strong><br />Vibrionales（ビブリオ科）</td>
+              <td><strong>陽性</strong></td>
+              <td>海水・汽水（好塩性が多い）</td>
+              <td>
+                <em>V. cholerae</em>、<em>V. parahaemolyticus</em>、<em>V. vulnificus</em>
+              </td>
+              <td>
+                <span class="pill">コンマ状</span><span class="pill">鞭毛</span><span class="pill">海産物</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>エロモナス目</strong><br />Aeromonadales（エロモナス科）</td>
+              <td><strong>陽性</strong></td>
+              <td>淡水（河川・湖沼・泥）</td>
+              <td>
+                <em>A. hydrophila</em>、<em>A. caviae</em>、<em>A. veronii</em>
+              </td>
+              <td>
+                <span class="pill">塩不要</span><span class="pill">淡水曝露</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: 18px">鑑別の流れ</h3>
+        <div class="flow">
+          <div class="step"><strong>グラム陰性桿菌（GNR）</strong>が検出された</div>
+          <div class="arrow">↓ ブドウ糖を<strong>発酵</strong>する？（非発酵菌は Chapter02C：緑膿菌など）</div>
+          <div class="grid two">
+            <div class="step">
+              <strong>オキシダーゼ（−）</strong>→ <strong>腸内細菌目</strong><br />
+              <em>E. coli</em>、<em>Klebsiella</em> など。<strong>ESBL・CRE/CPE に最大警戒</strong>。
+            </div>
+            <div class="step">
+              <strong>オキシダーゼ（＋）</strong><br />
+              ・海水・海産物・塩分が好き → <strong>ビブリオ科</strong><br />
+              ・淡水・塩分不要 → <strong>エロモナス科</strong>
+            </div>
+          </div>
+        </div>
+        <p class="note">
+          ※ 例外：<em>Plesiomonas shigelloides</em> は腸内細菌目だがオキシダーゼ陽性。
+        </p>
+      </section>
+
+      <!-- 腸内細菌目 -->
+      <section class="card">
+        <h2>腸内細菌目（Enterobacterales）</h2>
+        <p>
+          以前の「腸内細菌科」から遺伝子解析を経て「目」に格上げされた。グラム陰性桿菌の中で最も種類が多く、
+          医療現場で毎日遭遇する最重要グループ。
+        </p>
+        <div class="grid two">
+          <div class="card">
+            <h3>共通する特徴</h3>
+            <ul>
+              <li>通性嫌気性（酸素の有無にかかわらず発育）。</li>
+              <li>ブドウ糖を発酵して酸を産生する。</li>
+              <li><strong>オキシダーゼ陰性</strong>（ビブリオ科・エロモナス科との最大の鑑別点）。</li>
+              <li>ほとんどが腸管内に常在 or 腸管を介して伝播する。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>誘導型AmpCを持つ菌（要注意）</h3>
+            <ul>
+              <li>
+                <em>Enterobacter cloacae</em> complex、<em>Klebsiella aerogenes</em>、
+                <em>Citrobacter freundii</em>、<em>Serratia marcescens</em> など。
+              </li>
+              <li>第三世代セフェム系抗菌薬の投与中にAmpCが過剰産生され、治療中に耐性化することがある。</li>
+              <li>重症例ではセフェピムやカルバペネム系抗菌薬を検討（感受性と施設指針に従う）。</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 18px">主要菌のショートノート</h3>
+        <div class="grid three">
+          <div class="card">
+            <h3><em>Escherichia coli</em><br />（大腸菌）</h3>
+            <ul>
+              <li>尿路感染症（膀胱炎・腎盂腎炎）の原因菌第1位。</li>
+              <li>敗血症、胆道感染症、新生児髄膜炎など。</li>
+              <li>下痢原性大腸菌（EHEC、ETEC、EPEC、EIEC、EAEC）が食中毒・腸炎を起こす。</li>
+              <li>
+                EHEC（腸管出血性大腸菌：O157 など）：志賀毒素（Stx）産生 → 溶血性尿毒症症候群（HUS）。
+                <strong>3類</strong>。
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><em>Klebsiella pneumoniae</em><br />（肺炎桿菌）</h3>
+            <ul>
+              <li>健常者の腸内にも存在。免疫低下者の肺炎・尿路感染・院内感染。</li>
+              <li>厚い<strong>莢膜</strong>（ムコイド状のコロニー）が特徴。</li>
+              <li>高病原性株（hvKp）は肝膿瘍・眼内炎・髄膜炎など転移性病変を起こすことがある。</li>
+              <li>アンピシリンに自然耐性。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><em>Proteus mirabilis</em> など<br />（変形菌）</h3>
+            <ul>
+              <li>ウレアーゼ産生 → 尿をアルカリ化。</li>
+              <li>尿路結石（ストルバイト結石）や、カテーテル関連尿路感染の原因に。</li>
+              <li>寒天上で遊走（swarming）する。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><em>Salmonella</em> / <em>Shigella</em> / <em>Yersinia</em></h3>
+            <ul>
+              <li>
+                <em>Salmonella</em> Typhi / Paratyphi：腸チフス・パラチフス（<strong>3類</strong>）。
+                非チフス性<em>Salmonella</em>は食中毒。
+              </li>
+              <li><em>Shigella</em>：細菌性赤痢（<strong>3類</strong>）。少量の菌で感染する。</li>
+              <li>
+                <em>Yersinia enterocolitica</em> は腸炎、<em>Y. pestis</em> はペスト（<strong>1類</strong>）。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 耐性菌 -->
+      <section class="card">
+        <h2>最も警戒される耐性菌：ESBL・CRE／CPE</h2>
+        <p>
+          腸内細菌目は抗菌薬の使用圧のもとで、β-ラクタム系抗菌薬を分解する酵素（β-ラクタマーゼ）の遺伝子を獲得して耐性化してきた。
+          多くはプラスミド上にあり、菌種を越えて伝播する。
+        </p>
+        <div class="grid two">
+          <div class="card">
+            <h3>① ESBL産生菌（拡張型β-ラクタマーゼ産生菌）</h3>
+            <ul>
+              <li>
+                ペニシリン系、第一〜第三（・第四）世代セフェム系、アズトレオナムを分解する。
+                セファマイシン系・カルバペネム系は基本的に分解しない。
+              </li>
+              <li>
+                市中の膀胱炎でも<em>E. coli</em>のESBL産生率が上昇している。
+              </li>
+              <li>
+                重症感染症の治療ではカルバペネム系抗菌薬を用いることが多い。
+              </li>
+              <li>試験管内ではクラブラン酸などβ-ラクタマーゼ阻害薬で阻害される。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>② CRE（カルバペネム耐性腸内細菌目細菌）／ CPE（カルバペネマーゼ産生腸内細菌目細菌）</h3>
+            <ul>
+              <li>
+                <strong>CRE</strong>：カルバペネム系抗菌薬に耐性を示す腸内細菌目。
+                感染症法上<strong>5類全数把握</strong>（基準は厚労省資料で確認）。
+              </li>
+              <li>
+                <strong>CPE</strong>：CREのうち、カルバペネムを直接分解する酵素（カルバペネマーゼ）の遺伝子を持つもの。
+                プラスミドで他菌種へ伝播するため、院内感染対策上、特に厳重な対応が必要。
+              </li>
+              <li>使える抗菌薬が限られ、「悪夢の耐性菌（nightmare bacteria）」と呼ばれる。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ambler分類 -->
+      <section class="card">
+        <h2>β-ラクタマーゼの Ambler分類</h2>
+        <p>
+          β-ラクタマーゼを<strong>アミノ酸配列（構造）</strong>に基づいてA〜Dの4クラスに分ける分類。
+          活性中心にセリンを持つ<strong>セリン酵素（A・C・D）</strong>と、亜鉛を必要とする<strong>金属酵素（B：MBL）</strong>に大別される。
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 10%">クラス</th>
+              <th style="width: 16%">酵素の性質</th>
+              <th>代表的な酵素</th>
+              <th>主な特徴・基質</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A</strong></td>
+              <td>セリン酵素</td>
+              <td>
+                <span class="kbd">CTX-M</span>（ESBL）、<span class="kbd">TEM</span>・<span class="kbd">SHV</span>（ESBLを含む）、<span class="kbd">KPC</span>（カルバペネマーゼ）
+              </td>
+              <td>
+                ペニシリン系・セフェム系を分解。KPCはカルバペネム系・アズトレオナムも分解。
+              </td>
+            </tr>
+            <tr>
+              <td><strong>B</strong></td>
+              <td>金属酵素（亜鉛、MBL）</td>
+              <td><span class="kbd">IMP</span>、<span class="kbd">NDM</span>、<span class="kbd">VIM</span></td>
+              <td>
+                カルバペネム系を強力に分解。<strong>アズトレオナムは分解しない</strong>。EDTAで阻害される。
+              </td>
+            </tr>
+            <tr>
+              <td><strong>C</strong></td>
+              <td>セリン酵素</td>
+              <td><span class="kbd">AmpC</span>（染色体性／プラスミド性）</td>
+              <td>
+                第三世代セフェム系やセファマイシン系までを分解。クラブラン酸では阻害されにくい。
+              </td>
+            </tr>
+            <tr>
+              <td><strong>D</strong></td>
+              <td>セリン酵素</td>
+              <td><span class="kbd">OXA</span>型（例：OXA-48）</td>
+              <td>オキサシリンを分解。一部はカルバペネマーゼとして働く。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>CTX-M（クラスA）</h3>
+            <ul>
+              <li>ESBLの中で世界的・国内でも主要。</li>
+              <li>名称は「セフォタキシム（CTX）を良く分解する酵素（Munich で報告）」に由来。</li>
+              <li><em>E. coli</em>・<em>K. pneumoniae</em> が持つことが多い。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>KPC（クラスA）</h3>
+            <ul>
+              <li><em>Klebsiella pneumoniae</em> carbapenemase の略。</li>
+              <li>米国・欧州・中国などで多い。日本国内の検出は少ないが、海外からの持ち込みに警戒。</li>
+              <li>ほぼ全てのβ-ラクタム系抗菌薬（アズトレオナム含む）を分解する。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>IMP（クラスB）</h3>
+            <ul>
+              <li>イミペネム（IMP）を分解することから命名されたMBL。</li>
+              <li>日本国内のCPEでは<strong>IMP型が大半</strong>を占める。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>NDM（クラスB）</h3>
+            <ul>
+              <li>New Delhi metallo-β-lactamase。インドで報告され世界中に拡散。</li>
+              <li>海外のCPEの主流の一つ。日本でも海外渡航歴のある患者などから検出される。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card note" style="margin-top: 18px">
+          <h3>治療・検査の視点：クラスA/D と クラスB の違い</h3>
+          <ul>
+            <li>
+              <strong>検査</strong>：クラスB（MBL）は活性に亜鉛が必要なため、EDTAなどのキレート剤で阻害される。この性質を利用してMBLを同定する（クラスAのKPCではボロン酸系阻害薬が用いられる）。
+            </li>
+            <li>
+              <strong>アズトレオナム</strong>：MBLには分解されないが、KPCは分解する。MBL産生菌にESBLなどを同時に持つ場合は無効になり得るため、他剤との併用や阻害薬配合薬が検討される。
+            </li>
+            <li>
+              <strong>新規β-ラクタマーゼ阻害薬配合薬</strong>：有効な酵素クラスが薬ごとに異なる（セリン酵素に有効でもMBLには無効なもの、など）。
+              クラスの同定が薬剤選択に直結する。
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ビブリオ -->
+      <section class="card">
+        <h2>ビブリオ科（<em>Vibrio</em> 属）</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>細菌学的特徴</h3>
+            <ul>
+              <li>グラム陰性の<strong>コンマ状（湾曲）桿菌</strong>。極鞭毛で活発に運動する。</li>
+              <li><strong>オキシダーゼ陽性</strong>（腸内細菌目との鑑別）。</li>
+              <li>多くは海水・汽水域に生息し、<strong>塩分を好む（好塩性）</strong>。コレラ菌は塩分がなくても発育できる。</li>
+              <li>選択培地：TCBS寒天（コレラ菌は黄色、腸炎ビブリオは緑色のコロニー）。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>臨床上のポイント</h3>
+            <ul>
+              <li>感染経路：汚染された水・生魚介類の摂取、海水曝露による創傷感染。</li>
+              <li>患者背景（肝疾患、免疫低下）で重症度が大きく変わる菌種がある。</li>
+              <li>水様性下痢では<strong>脱水の補正（輸液）</strong>が治療の基本。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid three" style="margin-top: 18px">
+          <div class="card">
+            <h3><em>Vibrio cholerae</em><br />（コレラ菌）</h3>
+            <ul>
+              <li>コレラ毒素による大量の水様便（米のとぎ汁様）、重症脱水。</li>
+              <li>O1・O139 血清群が流行を起こす。</li>
+              <li>海水だけでなく淡水でも生存する。</li>
+              <li>感染症法で<strong>3類</strong>。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><em>Vibrio parahaemolyticus</em><br />（腸炎ビブリオ）</h3>
+            <ul>
+              <li>夏季の生鮮魚介類による食中毒の代表。</li>
+              <li>好塩性のため、真水（水道水）での洗浄が有効な予防の一つ。</li>
+              <li>急性胃腸炎（下痢・腹痛・発熱）。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><em>Vibrio vulnificus</em><br />（ビブリオ・バルニフィカス）</h3>
+            <ul>
+              <li>肝疾患・鉄過剰・免疫低下の患者に重症化しやすい。</li>
+              <li>生の魚介類の摂取や、傷口への海水曝露で感染。</li>
+              <li>敗血症と、数時間〜数日で進行する壊死性軟部組織感染症（いわゆる「人食いバクテリア」と呼ばれることがある）。</li>
+              <li>疑ったら速やかな抗菌薬投与と外科的デブリードマンを検討。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- エロモナス -->
+      <section class="card">
+        <h2>エロモナス科（<em>Aeromonas</em> 属）</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>細菌学的特徴</h3>
+            <ul>
+              <li>ビブリオ科に似るが、<strong>淡水</strong>（河川・湖沼・泥・下水）に生息し、<strong>塩分を必要としない</strong>。</li>
+              <li><strong>オキシダーゼ陽性</strong>、ブドウ糖を発酵。</li>
+              <li>魚類の病原菌としても有名。</li>
+              <li>
+                代表菌種：<em>A. hydrophila</em>、<em>A. caviae</em>、<em>A. veronii</em>（biovar sobria）。
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>臨床像</h3>
+            <ul>
+              <li>汚染された淡水に触れた外傷後の<strong>軟部組織感染症</strong>（壊死性筋膜炎に至ることもある）。</li>
+              <li>汚染水・食品の摂取による<strong>感染性腸炎</strong>（水様性〜粘血便）。</li>
+              <li>肝硬変・悪性腫瘍などの宿主では菌血症を起こすことがある。</li>
+              <li>アンピシリンに自然耐性。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめテーブル -->
+      <section class="card">
+        <h2>鑑別と要点（クイック表）</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>菌</th>
+              <th>主な感染源／経路</th>
+              <th>キーポイント</th>
+              <th>主な臨床像</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><em>E. coli</em></td>
+              <td>腸管内常在、食品（EHEC）</td>
+              <td>ESBL、EHECの志賀毒素</td>
+              <td>尿路感染、敗血症、腸炎、HUS</td>
+            </tr>
+            <tr>
+              <td><em>K. pneumoniae</em></td>
+              <td>腸内常在、院内</td>
+              <td>莢膜、hvKp、CRE</td>
+              <td>肺炎、尿路感染、肝膿瘍</td>
+            </tr>
+            <tr>
+              <td><em>Proteus</em></td>
+              <td>腸内常在、カテーテル</td>
+              <td>ウレアーゼ、遊走</td>
+              <td>尿路感染、尿路結石</td>
+            </tr>
+            <tr>
+              <td><em>V. cholerae</em></td>
+              <td>汚染水・食品</td>
+              <td>コレラ毒素、3類</td>
+              <td>米のとぎ汁様下痢、脱水</td>
+            </tr>
+            <tr>
+              <td><em>V. parahaemolyticus</em></td>
+              <td>夏季の生魚介類</td>
+              <td>好塩性、TCBSで緑色</td>
+              <td>急性胃腸炎</td>
+            </tr>
+            <tr>
+              <td><em>V. vulnificus</em></td>
+              <td>生魚介類、海水曝露</td>
+              <td>肝疾患・免疫低下で重症化</td>
+              <td>敗血症、壊死性軟部組織感染</td>
+            </tr>
+            <tr>
+              <td><em>Aeromonas</em></td>
+              <td>淡水曝露、汚染水</td>
+              <td>塩不要、オキシダーゼ陽性</td>
+              <td>軟部組織感染、腸炎</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 自習チェック -->
+      <section class="card">
+        <h2>自習チェック（3分）</h2>
+        <ul>
+          <li>腸内細菌目とビブリオ科・エロモナス科を見分ける、最初の簡易検査は？</li>
+          <li>ESBL と CPE の違いは？ それぞれ感染症法上の扱いは？</li>
+          <li>Ambler分類のクラスA〜Dのうち、亜鉛を必要とするのはどれか？ その検査上の利用法は？</li>
+          <li>アズトレオナムは、KPC産生菌とMBL産生菌でそれぞれどうなるか？</li>
+          <li>海水曝露後に急速に進行する壊死性軟部組織感染を起こしやすい患者背景と菌は？</li>
+          <li>ビブリオ科とエロモナス科を、生息環境と塩分要求性で区別できるか？</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Osaka Metropolitan University — Department of Bacteriology</p>
+      <p class="ai-note" style="margin-top:12px;font-size:.85rem;line-height:1.7;text-align:left;max-width:900px;margin-left:auto;margin-right:auto;">※ 本テキストは AI（ChatGPT, Claude）を用いて作成されました。文責は AI による作成物であることを踏まえ、利用者自身が内容を確認してください。内容には誤りが含まれる可能性があります。誤りに気付いていてもあえて修正していない部分もあります。必ず自分で真偽を確認すること。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。</p>
+    </footer>
+  </body>
+</html>
