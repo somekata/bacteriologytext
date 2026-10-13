@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>壊死性筋膜炎（necrotizing fasciitis）— 医学部学習用テキスト</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../chapter.css" />
+    <style>
+      /* 壊死性筋膜炎ページ用の補足 */
+      main.container > .card { margin-bottom: 18px; }
+      .card h2 { margin-bottom: 10px; }
+      .card h3 { margin-top: 14px; margin-bottom: 8px; }
+      .card p { margin-bottom: 10px; color: var(--text); }
+      .card ul ul { margin-left: 1.4em; margin-top: 4px; }
+      .card ul li { margin-bottom: 6px; }
+      .card ol { padding-left: 1.6em; margin: 8px 0; }
+      .card ol li { margin-bottom: 8px; }
+      .card.note { margin-top: 12px; }
+      .card.note h3 { margin-top: 0; }
+      .table { margin: 12px 0; }
+      .table th, .table td { text-align: left; }
+      .table th { text-align: center; }
+      .warn { border-left: 5px solid #d9480f; }
+      sup.ref { font-size: 0.75em; color: var(--accent); }
+      .calc-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .calc-grid label { display: block; font-weight: bold; margin-bottom: 4px; }
+      .calc-grid input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+      .calc-grid .hint { color: var(--muted); font-size: 0.85rem; }
+      .calc-result {
+        margin-top: 16px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #f5fbf8;
+        border: 1px solid #cfeadf;
+      }
+      .calc-result .score { font-size: 1.6rem; font-weight: bold; }
+      .calc-result.high { background: #fff1ec; border-color: #f3c0ad; }
+      .calc-result.mid { background: #fff9e6; border-color: #ecd9a0; }
+      .calc-actions { margin-top: 12px; }
+      .calc-actions button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 8px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="chapter-hero">
+      <h1>壊死性筋膜炎（<em>necrotizing fasciitis</em>, NF）</h1>
+      <p class="subtitle">
+        外科的緊急症としての壊死性軟部組織感染症 ／ 医学部学習用テキスト
+      </p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../../index.html">ポータル</a></li>
+        <li><a href="../chap01_gpc.html">Chapter01：グラム陽性球菌</a></li>
+        <li><a href="../chap02B_enterobacterales.html">Chapter02B</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <!-- 概要 -->
+      <section class="card" id="overview">
+        <h2>概要</h2>
+        <p>
+          <strong>壊死性筋膜炎（NF）</strong>は、筋膜面を主座として急速に進行し致死的となりうる軟部組織感染症であり、<strong>外科的緊急症</strong>である。
+          筋膜および皮下組織の壊死が急速に進展し、しばしば全身性の毒性反応を伴い、治療が遅れると敗血症性ショックや多臓器不全に至る。
+        </p>
+        <div class="card note warn">
+          <h3>🔑 押さえるポイント</h3>
+          <ul>
+            <li>発生頻度はまれ（年間10万人あたり 0.3〜15例程度）だが、死亡率は報告により 11〜40%、切断率は 20〜50% に及ぶ。<sup class="ref">[1][2][5][6]</sup></li>
+            <li><strong>診断の決め手は臨床的疑いと外科的評価</strong>。検査スコアで除外してはならない。</li>
+            <li>治療の柱は<strong>早期の外科的デブリードマン</strong>＋広域抗菌薬＋集中治療。</li>
+            <li>細菌学的には<strong>多菌種（混合感染）</strong>と<strong>単一菌（A群レンサ球菌など）</strong>に大別される。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 病態 -->
+      <section class="card" id="pathophysiology">
+        <h2>病態：なぜ急速に広がるのか</h2>
+        <p>
+          筋膜は1枚のシートではなく、コラーゲン線維が走る<strong>立体的な網目（スポンジ状）の構造</strong>で、血管・神経・リンパが通り、組織間のすべりを担う。
+          細菌が筋膜内に侵入すると、急速な菌増殖と好中球浸潤、液化壊死が起こる。<sup class="ref">[2][9]</sup>
+        </p>
+        <div class="grid two">
+          <div class="card">
+            <h3>① 筋膜面に沿った急速な進展</h3>
+            <ul>
+              <li>筋膜は皮下脂肪層に比べて血流が乏しく、免疫細胞も到達しにくい。</li>
+              <li>菌が産生する組織融解酵素（ヒアルロニダーゼ、プロテアーゼなど）や毒素が結合組織を破壊し、筋膜面に沿って広がる。</li>
+              <li>進展は数時間〜数日の単位で、時に皮膚所見の範囲を超えて深部が広範に壊死している。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>② 血栓形成と虚血</h3>
+            <ul>
+              <li>筋膜内の血管に血栓が形成され、穿通枝が閉塞すると、<strong>皮膚の虚血・壊疽が二次的に</strong>生じる。<sup class="ref">[9]</sup></li>
+              <li>血流が途絶えた組織には抗菌薬が届きにくい → <strong>抗菌薬だけでは治らず、外科的に壊死組織を除去する必要がある</strong>。</li>
+              <li>腫脹により区画内圧が上がり、コンパートメント症候群を合併することもある。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>③ 皮膚からは見えにくい</h3>
+            <ul>
+              <li>初期は軽度の発赤・腫脹のみで、蜂窩織炎との鑑別が難しい。</li>
+              <li>所見に比して不釣り合いに強い疼痛（pain out of proportion）が重要な手がかり。</li>
+              <li>進行すると、水疱・血疱、皮膚の暗紫色変化、知覚低下、捻髪音（ガス産生）などが出る。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>④ 毒素と全身炎症</h3>
+            <ul>
+              <li>壊死組織から細菌毒素や炎症性メディエーターが血中に入り、敗血症性ショック・多臓器不全に至る。</li>
+              <li>A群レンサ球菌では毒素性ショック症候群を伴う<strong>劇症型溶血性レンサ球菌感染症</strong>（感染症法 5類全数）として現れる。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分類 -->
+      <section class="card" id="classification">
+        <h2>原因菌による分類</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 12%">分類</th>
+              <th style="width: 30%">原因菌</th>
+              <th>特徴</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Type I</strong></td>
+              <td>好気性菌と嫌気性菌の混合（多菌種）</td>
+              <td>全体の約70〜80%。糖尿病・末梢血管障害などの基礎疾患をもつ患者に多い。<sup class="ref">[2][10]</sup></td>
+            </tr>
+            <tr>
+              <td><strong>Type II</strong></td>
+              <td>
+                A群β溶血性レンサ球菌（<em>Streptococcus pyogenes</em>）、<em>Staphylococcus aureus</em>（MRSAを含む）などの単一菌
+              </td>
+              <td>健常者にも発症。急速進行性で、毒素性ショック症候群を合併しやすい。<sup class="ref">[2][10]</sup></td>
+            </tr>
+            <tr>
+              <td><strong>Type III</strong></td>
+              <td>
+                グラム陰性桿菌（<em>Vibrio</em>、<em>Aeromonas</em> など）
+              </td>
+              <td>海水曝露や熱帯・沿岸地域で多い。<sup class="ref">[2][10]</sup></td>
+            </tr>
+            <tr>
+              <td><strong>Type IV</strong></td>
+              <td>真菌性</td>
+              <td>まれ。<sup class="ref">[1]</sup></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">
+          ※ 分類の仕方は文献により異なる（例：Type III を <em>Clostridium</em> によるものとする分類もある）。Type IV を設けない分類もある。
+        </p>
+        <p>
+          関連する菌の詳細：<a href="../chap01_gpc.html">Chapter01（<em>S. pyogenes</em>・<em>S. aureus</em>）</a>、
+          <a href="../chap02B_enterobacterales.html">Chapter02B（<em>Vibrio vulnificus</em>・<em>Aeromonas</em>）</a>。
+        </p>
+      </section>
+
+      <!-- 臨床像と診断 -->
+      <section class="card" id="clinical">
+        <h2>臨床像と診断</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>リスク因子</h3>
+            <ul>
+              <li>糖尿病、末梢血管障害、肥満、免疫抑制状態。</li>
+              <li>肝疾患・アルコール多飲（<em>Vibrio vulnificus</em> など）。</li>
+              <li>外傷、手術創、注射部位、会陰部・肛門周囲の感染など。</li>
+              <li>海水・淡水への創部曝露、生魚介類の摂取。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>疑うべき所見</h3>
+            <ul>
+              <li><strong>所見に不釣り合いな激痛</strong>、急速に拡大する発赤・腫脹。</li>
+              <li>水疱・血疱、暗紫色の皮膚、知覚低下、捻髪音。</li>
+              <li>高熱、頻脈、低血圧、意識障害などの全身毒性。</li>
+              <li>抗菌薬投与でも改善せず進行する「蜂窩織炎」。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card note warn">
+          <h3>診断の原則</h3>
+          <ul>
+            <li>臨床的に疑えば、<strong>画像や検査結果を待たずに外科的評価（試験切開・デブリードマン）</strong>を行う。</li>
+            <li>CT・MRIは補助的に有用（ガス・筋膜の肥厚など）だが、<strong>検査のために手術を遅らせない</strong>。</li>
+            <li>血液培養・創部培養・術中組織の培養とグラム染色で原因菌を確認する。</li>
+            <li>手術までの時間が死亡率に関連するという報告がある。<sup class="ref">[10]</sup></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- LRINEC -->
+      <section class="card" id="lrinec">
+        <h2>LRINEC スコア</h2>
+        <p>
+          <strong>LRINEC</strong>（Laboratory Risk Indicator for Necrotizing Fasciitis）は、血液検査6項目から壊死性筋膜炎を他の軟部組織感染症と鑑別するための<strong>補助的スコア</strong>。
+          2004年に Wong らが開発した。<sup class="ref">[11]</sup>
+          <strong>感度が低く、単独で壊死性筋膜炎を除外する目的には使用してはならない。</strong><sup class="ref">[12]</sup>
+        </p>
+
+        <h3>配点（合計 0〜13点）</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>基準</th>
+              <th>点数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>CRP</td><td>&lt;15 mg/dL（&lt;150 mg/L）／ ≥15 mg/dL</td><td>0 ／ 4</td></tr>
+            <tr><td>白血球数</td><td>&lt;15,000 ／ 15,000〜25,000 ／ &gt;25,000（/μL）</td><td>0 ／ 1 ／ 2</td></tr>
+            <tr><td>ヘモグロビン</td><td>&gt;13.5 ／ 11〜13.5 ／ &lt;11（g/dL）</td><td>0 ／ 1 ／ 2</td></tr>
+            <tr><td>血清ナトリウム</td><td>≥135 ／ &lt;135（mEq/L）</td><td>0 ／ 2</td></tr>
+            <tr><td>血清クレアチニン</td><td>≤1.6 ／ &gt;1.6（mg/dL）</td><td>0 ／ 2</td></tr>
+            <tr><td>血糖</td><td>≤180 ／ &gt;180（mg/dL）</td><td>0 ／ 1</td></tr>
+          </tbody>
+        </table>
+        <p>
+          一般に <strong>6点未満を低リスク、6〜7点を中等度リスク、8点以上を高リスク</strong>に分類する。
+          原著ではカットオフ6点で陽性的中率92%・陰性的中率96%と報告された。<sup class="ref">[11]</sup>
+        </p>
+
+        <h3>LRINEC スコア計算機</h3>
+        <div class="calc-grid">
+          <div>
+            <label for="in-crp">CRP（mg/dL）</label>
+            <input id="in-crp" type="number" step="0.1" min="0" inputmode="decimal" />
+            <span class="hint">mg/L の値は 10 で割って入力（150 mg/L = 15 mg/dL）</span>
+          </div>
+          <div>
+            <label for="in-wbc">白血球数（/μL）</label>
+            <input id="in-wbc" type="number" step="100" min="0" inputmode="numeric" />
+            <span class="hint">例：18,000 → 18000</span>
+          </div>
+          <div>
+            <label for="in-hb">ヘモグロビン（g/dL）</label>
+            <input id="in-hb" type="number" step="0.1" min="0" inputmode="decimal" />
+          </div>
+          <div>
+            <label for="in-na">血清ナトリウム（mEq/L）</label>
+            <input id="in-na" type="number" step="1" min="0" inputmode="numeric" />
+          </div>
+          <div>
+            <label for="in-cr">血清クレアチニン（mg/dL）</label>
+            <input id="in-cr" type="number" step="0.01" min="0" inputmode="decimal" />
+          </div>
+          <div>
+            <label for="in-glu">血糖（mg/dL）</label>
+            <input id="in-glu" type="number" step="1" min="0" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="calc-actions">
+          <button type="button" id="calc-reset">入力をクリア</button>
+        </div>
+        <div class="calc-result" id="calc-result" aria-live="polite">
+          全項目を入力すると合計点が表示されます。
+        </div>
+        <p class="note">
+          ※ 学習用の計算機です。実際の診療判断には使用しないでください。スコアが低くても壊死性筋膜炎は除外できません。
+        </p>
+
+        <h3>限界（なぜ除外に使えないか）</h3>
+        <ul>
+          <li>
+            <strong>感度が低い</strong>：複数の検証研究でカットオフ6点の感度は 41〜75%、特異度は 83〜95% 程度と報告され、原著の性能は再現されていない。
+            2019年のメタ解析（23研究、5,982例）では LRINEC≥6 で感度 68.2%・特異度 84.8%、≥8 で感度 40.8%・特異度 94.9%。
+            結論は「NSTIの除外に用いるべきではない」。<sup class="ref">[12]</sup>
+          </li>
+          <li><strong>陽性的中率が低い</strong>：前向き研究では LRINEC≥6 でも実際にNSTIだったのは約3割で、大半が偽陽性という報告がある。<sup class="ref">[14][15]</sup></li>
+          <li><strong>小児では信頼性が低い</strong>：小児例では中央値が低く、有用性は限定的。<sup class="ref">[2]</sup></li>
+          <li>
+            <strong>重症度・予後予測としての価値は限定的</strong>：死亡率との関連は一貫しない。一方、8点超で切断リスクとの関連を認める報告もあり議論が分かれる。<sup class="ref">[5][16]</sup>
+          </li>
+          <li>重症化に伴う免疫抑制状態では白血球やCRPが低下しうる。重症度を過小評価する可能性がある。<sup class="ref">[5]</sup></li>
+          <li>後発のスコア（LARINF、PHスコアなど）はLRINECより診断精度が高いとする報告もあるが、外部検証は限定的。<sup class="ref">[17][18][19]</sup></li>
+        </ul>
+        <div class="card note warn">
+          <h3>まとめ</h3>
+          <p>
+            LRINECはあくまで<strong>臨床的評価を補完する一助</strong>。疼痛が所見に不釣り合い、急速進行性の紅斑・水疱・捻髪音などの臨床所見や疑いが強い場合は、
+            検査値にかかわらず速やかに外科的評価を行う。<sup class="ref">[9][12]</sup>
+          </p>
+        </div>
+      </section>
+
+      <!-- 治療 -->
+      <section class="card" id="treatment">
+        <h2>治療</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>① 外科的デブリードマン（最優先）</h3>
+            <ul>
+              <li>壊死した筋膜・皮下組織を<strong>できるだけ早期に、十分に</strong>切除する。</li>
+              <li>残存した壊死組織があれば再手術（24〜48時間後の再評価）を行う。</li>
+              <li>改善しない広範壊死では切断が必要になることもある。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>② 広域抗菌薬</h3>
+            <ul>
+              <li>グラム陽性菌（MRSAを含む）・グラム陰性菌・嫌気性菌を広くカバーする経験的治療を直ちに開始する。</li>
+              <li>A群レンサ球菌や毒素産生が疑われる場合は、毒素産生を抑える目的でクリンダマイシンなどの併用が検討される。</li>
+              <li>IDSAガイドライン（2014）では、経験的治療としてバンコマイシンまたはリネゾリドと、ピペラシリン/タゾバクタムまたはカルバペネム系抗菌薬の併用などが例示されている。<sup class="ref">[7]</sup></li>
+              <li>培養結果で狭域化（脱エスカレーション）する。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>③ 菌種に応じた考慮</h3>
+            <ul>
+              <li><em>Vibrio vulnificus</em>：海水曝露・生魚介類歴＋肝疾患 → テトラサイクリン系（ドキシサイクリン）＋セフェム系などが推奨される例がある。<sup class="ref">[7]</sup></li>
+              <li><em>Aeromonas</em>：淡水曝露歴 → ドキシサイクリン＋フルオロキノロン系またはセフェム系などが例示される。<sup class="ref">[7]</sup></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>④ 全身管理・補助療法</h3>
+            <ul>
+              <li>敗血症性ショックに対する輸液・循環管理・集中治療。</li>
+              <li>高圧酸素療法は補助療法として検討されることがあるが、有効性は確立していない。<sup class="ref">[4]</sup></li>
+              <li>具体的な薬剤・用量は最新のガイドラインと施設の方針、感受性に従う。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section class="card" id="summary">
+        <h2>重要ポイント（まとめ）</h2>
+        <ol>
+          <li><strong>壊死性筋膜炎は外科的緊急症</strong>。疑った時点で外科・集中治療・感染症科に相談し、時間を無駄にしない。</li>
+          <li>皮膚所見は軽くても、<strong>不釣り合いな激痛</strong>が重要なサイン。</li>
+          <li>筋膜は網目状の構造で血流が乏しく、菌と毒素が筋膜面に沿って急速に広がる。血栓形成で虚血が進むと抗菌薬が届きにくい。</li>
+          <li>Type I（多菌種）、Type II（A群レンサ球菌・<em>S. aureus</em>）、Type III（<em>Vibrio</em>・<em>Aeromonas</em> など）を区別する。</li>
+          <li><strong>LRINECは補助ツール</strong>。低スコアでも除外してはならない。</li>
+          <li>治療は<strong>デブリードマン＋広域抗菌薬＋全身管理</strong>。</li>
+        </ol>
+      </section>
+
+      <!-- 参考文献 -->
+      <section class="card" id="references">
+        <h2>参考文献</h2>
+        <ol class="footnotes">
+          <li>White TO, Ablett AD, Neo C, et al. Necrotizing Fasciitis. <em>The Bone &amp; Joint Journal</em>. 2026;108-B(9):1078-1086. doi:10.1302/0301-620X.108B9.BJJ-2026-0255.R1.</li>
+          <li>Stevens DL, Bryant AE. Necrotizing Soft-Tissue Infections. <em>N Engl J Med</em>. 2017;377(23):2253-2265. doi:10.1056/NEJMra1600673.</li>
+          <li>Abdalla TSA, Grotelüschen R, Abdalla ASA, et al. Prognostic factors for intraoperative detection of necrotizing fasciitis in severe soft tissue infections. <em>PLoS One</em>. 2023;18(5):e0285048. doi:10.1371/journal.pone.0285048.</li>
+          <li>Levett DZ, Bennett MH, Millar I. Adjunctive hyperbaric oxygen for necrotizing fasciitis. <em>Cochrane Database Syst Rev</em>. 2015. doi:10.1002/14651858.cd007937.pub2.</li>
+          <li>Chen Y, Huang Y, Shou J, et al. Epidemiology and prognostic factors of necrotizing fasciitis in resource-limited regions based on 119 cases. <em>Sci Rep</em>. 2025;15(1):27458. doi:10.1038/s41598-025-13278-8.</li>
+          <li>Zhao JC, Zhang BR, Shi K, et al. Necrotizing soft tissue infection: clinical characteristics and outcomes at a reconstructive center in Jilin Province. <em>BMC Infect Dis</em>. 2017;17(1):792. doi:10.1186/s12879-017-2907-6.</li>
+          <li>Stevens DL, Bisno AL, Chambers HF, et al. Practice Guidelines for the Diagnosis and Management of Skin and Soft Tissue Infections: 2014 Update by the Infectious Diseases Society of America. <em>Clin Infect Dis</em>. 2014;59(2):147-159. doi:10.1093/cid/ciu296.</li>
+          <li>Oliver-Gutierrez D, van der Veen RLP, Ros-Sánchez E, et al. Periorbital necrotizing fasciitis: clinical perspectives on nine cases. <em>Eur J Clin Microbiol Infect Dis</em>. 2024;43(10):2053-2059. doi:10.1007/s10096-024-04908-6.</li>
+          <li>Hua C, Urbina T, Bosc R, et al. Necrotising soft-tissue infections. <em>Lancet Infect Dis</em>. 2023;23(3):e81-e94. doi:10.1016/S1473-3099(22)00583-7.</li>
+          <li>Lau CH, Ling L, Zhang JZ, et al. Association between time to surgery and hospital mortality in patients with community-acquired limb necrotizing fasciitis: an 11-year multicenter retrospective cohort analysis. <em>BMC Infect Dis</em>. 2024;24(1):624. doi:10.1186/s12879-024-09501-y.</li>
+          <li>Wong CH, Khin LW, Heng KS, Tan KC, Low CO. The LRINEC (Laboratory Risk Indicator for Necrotizing Fasciitis) score: a tool for distinguishing necrotizing fasciitis from other soft tissue infections. <em>Crit Care Med</em>. 2004;32(7):1535-1541. doi:10.1097/01.ccm.0000129486.35458.7d.</li>
+          <li>Fernando SM, Tran A, Cheng W, et al. Necrotizing soft tissue infection: diagnostic accuracy of physical examination, imaging, and LRINEC score: a systematic review and meta-analysis. <em>Ann Surg</em>. 2019;269(1):58-65. doi:10.1097/SLA.0000000000002774.</li>
+          <li>Tessier JM, Sanders J, Sartelli M, et al. Necrotizing soft tissue infections: a focused review of pathophysiology, diagnosis, operative management, antimicrobial therapy, and pediatrics. <em>Surg Infect</em>. 2020;21(2):81-93. doi:10.1089/sur.2019.219.</li>
+          <li>Hsiao CT, Chang CP, Huang TY, Chen YC, Fann WC. Prospective validation of the Laboratory Risk Indicator for Necrotizing Fasciitis (LRINEC) score for necrotizing fasciitis of the extremities. <em>PLoS One</em>. 2020;15(1):e0227748. doi:10.1371/journal.pone.0227748.</li>
+          <li>Henry R, Matsushima K, Etzel M, et al. Utility of the Laboratory Risk Indicator for Necrotizing Fasciitis score: comorbid conditions do matter. <em>Surg Infect</em>. 2021;22(8):797-802. doi:10.1089/sur.2020.398.</li>
+          <li>Breidung D, Malsagova AT, Barth AA, et al. Diagnostic and prognostic value of the Laboratory Risk Indicator for Necrotising Fasciitis (LRINEC) based on an 18 years' experience. <em>J Plast Reconstr Aesthet Surg</em>. 2023;77:228-235. doi:10.1016/j.bjps.2022.11.061.</li>
+          <li>McDermott J, Kao LS, Keeley JA, et al. Necrotizing soft tissue infections: a review. <em>JAMA Surg</em>. 2024;159(11):1308-1315. doi:10.1001/jamasurg.2024.3365.</li>
+          <li>Fan Y, Chai Z, Wang L, et al. The PH score for early differentiation of necrotizing fasciitis: a retrospective diagnostic prediction study. <em>Infection</em>. 2026.</li>
+          <li>Breidung D, Grieb G, Malsagova AT, et al. Time is fascia: laboratory and anamnestic risk indicators for necrotizing fasciitis. <em>Surg Infect</em>. 2022;23(8):747-753. doi:10.1089/sur.2022.222.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Osaka Metropolitan University — Department of Bacteriology</p>
+      <p>このテキストは医学教育目的で作成されました。臨床診療上の最終判断には、最新の ガイドラインおよび感染症専門家との相談をお勧めします。</p>
+      <p class="ai-note" style="margin-top:12px;font-size:.85rem;line-height:1.7;text-align:left;max-width:900px;margin-left:auto;margin-right:auto;">※ 本テキストは AI（ChatGPT, Claude）を用いて作成されました。文責は AI による作成物であることを踏まえ、利用者自身が内容を確認してください。内容には誤りが含まれる可能性があります。誤りに気付いていてもあえて修正していない部分もあります。必ず自分で真偽を確認すること。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。</p>
+    </footer>
+
+    <script>
+      (function () {
+        var ids = ["crp", "wbc", "hb", "na", "cr", "glu"];
+        var el = {};
+        ids.forEach(function (k) { el[k] = document.getElementById("in-" + k); });
+        var out = document.getElementById("calc-result");
+
+        function val(k) {
+          var v = el[k].value;
+          if (v === "" || isNaN(Number(v))) return null;
+          return Number(v);
+        }
+
+        function calc() {
+          var v = {};
+          for (var i = 0; i < ids.length; i++) {
+            v[ids[i]] = val(ids[i]);
+            if (v[ids[i]] === null) {
+              out.className = "calc-result";
+              out.textContent = "全項目を入力すると合計点が表示されます。";
+              return;
+            }
+          }
+          var s = {};
+          s.crp = v.crp >= 15 ? 4 : 0; // 150 mg/L = 15 mg/dL
+          s.wbc = v.wbc > 25000 ? 2 : (v.wbc >= 15000 ? 1 : 0);
+          s.hb = v.hb < 11 ? 2 : (v.hb <= 13.5 ? 1 : 0);
+          s.na = v.na < 135 ? 2 : 0;
+          s.cr = v.cr > 1.6 ? 2 : 0;
+          s.glu = v.glu > 180 ? 1 : 0;
+          var total = s.crp + s.wbc + s.hb + s.na + s.cr + s.glu;
+
+          var level, cls;
+          if (total >= 8) { level = "高リスク（8点以上）"; cls = "high"; }
+          else if (total >= 6) { level = "中等度リスク（6〜7点）"; cls = "mid"; }
+          else { level = "低リスク（6点未満）"; cls = ""; }
+
+          out.className = "calc-result " + cls;
+          out.innerHTML =
+            '<div class="score">合計 ' + total + " / 13 点 — " + level + "</div>" +
+            "<div>内訳：CRP " + s.crp + "、白血球 " + s.wbc + "、Hb " + s.hb +
+            "、Na " + s.na + "、Cr " + s.cr + "、血糖 " + s.glu + "</div>" +
+            "<div><strong>低スコアでも壊死性筋膜炎は除外できません。</strong>臨床的疑いが強ければ速やかに外科的評価を。</div>";
+        }
+
+        ids.forEach(function (k) { el[k].addEventListener("input", calc); });
+        document.getElementById("calc-reset").addEventListener("click", function () {
+          ids.forEach(function (k) { el[k].value = ""; });
+          calc();
+        });
+      })();
+    </script>
+  </body>
+</html>
