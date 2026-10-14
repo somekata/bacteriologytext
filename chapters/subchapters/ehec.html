@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>腸管出血性大腸菌（EHEC）とベロ毒素 — 医学部学習用テキスト</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../chapter.css" />
+    <style>
+      /* EHEC ページ用の補足 */
+      main.container > .card { margin-bottom: 18px; }
+      .card h2 { margin-bottom: 10px; }
+      .card h3 { margin-top: 14px; margin-bottom: 8px; }
+      .card p { margin-bottom: 10px; color: var(--text); }
+      .card ul ul { margin-left: 1.4em; margin-top: 4px; }
+      .card ul li { margin-bottom: 6px; }
+      .card ol { padding-left: 1.6em; margin: 8px 0; }
+      .card ol li { margin-bottom: 8px; }
+      .card.note { margin-top: 12px; }
+      .card.note h3 { margin-top: 0; }
+      .table { margin: 12px 0; }
+      .table th, .table td { text-align: left; }
+      .table th { text-align: center; }
+      .warn { border-left: 5px solid #d9480f; }
+      .flow { display: grid; gap: 8px; margin: 12px 0; }
+      .flow .step {
+        background: #f5fbf8;
+        border: 1px solid #cfeadf;
+        border-radius: 12px;
+        padding: 10px 14px;
+      }
+      .flow .arrow { text-align: center; color: var(--accent); font-weight: bold; }
+      .stx { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 12px 0; }
+      .stx .a {
+        background: #087f5b; color: #fff; border-radius: 12px;
+        padding: 10px 18px; text-align: center; max-width: 360px;
+      }
+      .stx .bar { color: var(--accent); font-weight: bold; }
+      .stx .bs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+      .stx .b {
+        background: #e8f7f1; color: #087f5b; border: 1px solid #b7e0d0;
+        border-radius: 999px; padding: 8px 14px; font-weight: bold;
+      }
+      .refs a { word-break: break-all; }
+    </style>
+  </head>
+  <body>
+    <header class="chapter-hero">
+      <h1>腸管出血性大腸菌（EHEC）とベロ毒素</h1>
+      <p class="subtitle">
+        <em>Escherichia coli</em>（O157 など）／ Stx の構造と作用機序 ／ HUS の発症機序 ／ 医学部学習用テキスト
+      </p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="../../index.html">ポータル</a></li>
+        <li><a href="../chap02B_enterobacterales.html">Chapter02B：腸内細菌目</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <!-- 概要 -->
+      <section class="card" id="overview">
+        <h2>概要</h2>
+        <p>
+          <strong>腸管出血性大腸菌（EHEC：enterohemorrhagic <em>Escherichia coli</em>）</strong>は、
+          <strong>ベロ毒素（志賀毒素：Stx、VT）</strong>を産生し、激しい腹痛・血便（出血性大腸炎）と、
+          重篤な合併症である<strong>溶血性尿毒症症候群（HUS）</strong>・脳症を起こす。
+          感染症法で<strong>3類感染症</strong>に指定され、診断した医師は<strong>直ちに</strong>保健所へ届け出る。
+        </p>
+        <div class="grid two">
+          <div class="card">
+            <h3>原因菌・感染経路</h3>
+            <ul>
+              <li>血清型：<strong>O157</strong>（最多）、O26、O111 など。</li>
+              <li>感染経路：汚染された食品（加熱不足の食肉・生野菜など）の経口摂取、患者からの二次感染（糞口感染）。</li>
+              <li>感染力が強く、<strong>10〜100個程度</strong>の少量の菌でも感染する。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>臨床経過</h3>
+            <ul>
+              <li>潜伏期間：通常 3〜5日（2〜9日）。</li>
+              <li>激しい腹痛・水様性下痢で始まり、約90%で血便へ移行する。</li>
+              <li>発熱は高くないことが多い（微熱程度）。</li>
+              <li>発症の5〜13日頃に、一部（報告では3〜7%程度）がHUSを発症する。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ベロ毒素の構造 -->
+      <section class="card" id="structure">
+        <h2>ベロ毒素（Stx）の構造：AB<sub>5</sub> 型</h2>
+        <p>
+          役割の異なる2種類のサブユニットからなる<strong>AB<sub>5</sub>型毒素</strong>。
+          Aサブユニット1分子と、リング状に並ぶBサブユニット5分子で構成される。
+        </p>
+        <div class="stx" aria-label="AB5型毒素の模式図">
+          <div class="a"><strong>Aサブユニット（1分子）</strong><br />毒素の本体・酵素活性（RNA N-グリコシダーゼ）</div>
+          <div class="bar">│</div>
+          <div class="bs">
+            <span class="b">B</span><span class="b">B</span><span class="b">B</span><span class="b">B</span><span class="b">B</span>
+          </div>
+          <div style="color: var(--muted); font-size: 0.9rem">Bサブユニット（5分子）：細胞表面のGb3に結合</div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 16%">毒素</th>
+              <th>特徴</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Stx1（VT1）</strong></td>
+              <td>
+                <em>Shigella dysenteriae</em> 1型が産生する志賀毒素とほぼ同一（アミノ酸1個の違い）。
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Stx2（VT2）</strong></td>
+              <td>
+                Stx1とは構造・免疫学的性状が異なる。<strong>Stx2産生株の方がHUSなど重症化と関連しやすい</strong>とされる。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">
+          ※ Stx1とStx2は物理化学的・免疫学的性状は異なるが、Vero細胞毒性やマウス致死活性などの生物学的性状は類似している。
+          「Vero毒素」の名称はVero細胞（アフリカミドリザル腎由来）に対する細胞毒性に由来する。
+        </p>
+      </section>
+
+      <!-- 作用機序 -->
+      <section class="card" id="mechanism">
+        <h2>作用機序：タンパク質合成の阻害</h2>
+        <div class="flow">
+          <div class="step">
+            <strong>① 結合（Bサブユニット）</strong><br />
+            標的細胞表面の糖脂質受容体<strong>Gb3</strong>（globotriaosylceramide）に結合する。
+            Gb3は腸管・腎臓・脳の血管内皮などに多い。
+          </div>
+          <div class="arrow">↓</div>
+          <div class="step">
+            <strong>② 取り込みと細胞内輸送</strong><br />
+            エンドサイトーシスで細胞内へ入り、<strong>ゴルジ体 → 小胞体</strong>へと逆行性に輸送される。
+            Aサブユニットは切断されて活性型（A1断片）になり、細胞質へ移行する。
+          </div>
+          <div class="arrow">↓</div>
+          <div class="step">
+            <strong>③ 28S rRNAの脱プリン（Aサブユニットの酵素活性）</strong><br />
+            <strong>RNA N-グリコシダーゼ</strong>として、真核細胞の60Sリボソーム亜粒子に含まれる<strong>28S rRNAの特定のアデニン（4324番目）</strong>を遊離させる。
+          </div>
+          <div class="arrow">↓</div>
+          <div class="step">
+            <strong>④ タンパク質合成停止 → 細胞死</strong><br />
+            リボソームが機能を失い、タンパク質合成が止まって細胞死（アポトーシスなど）に至る。
+          </div>
+        </div>
+        <div class="card note">
+          <h3>補足</h3>
+          <ul>
+            <li>
+              ③は「RNAの切断」ではなく、<strong>塩基（アデニン）を外す</strong>反応（脱プリン）。
+            </li>
+            <li>
+              植物毒素の<strong>リシン</strong>も同じ作用機序（28S rRNAの同一アデニンの遊離）をもつ。
+            </li>
+            <li>
+              部位特異的変異による研究では、Stx1のAサブユニットのうち<strong>Glu167・Arg170・Trp203</strong>が活性発現に特に重要なアミノ酸残基と示された（KAKEN研究課題より）。
+              これらは立体構造上、リシンの活性部位に相当する近接した位置にある。
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- HUS -->
+      <section class="card" id="hus">
+        <h2>溶血性尿毒症症候群（HUS）の発症機序</h2>
+        <p>
+          HUSの主因は<strong>血管の内皮細胞の傷害</strong>。
+          EHECはまず腸の<strong>上皮細胞</strong>を傷害して出血性大腸炎（血便）を起こす。
+          そこから血中に入ったStxが全身を巡り、腎臓や脳の毛細血管の<strong>内皮細胞</strong>を傷害することがHUSの直接的な原因となる。
+        </p>
+        <div class="grid two">
+          <div class="card">
+            <h3>上皮細胞の傷害 ＝ 腸</h3>
+            <p>血便・腹痛（出血性大腸炎）の原因。</p>
+          </div>
+          <div class="card">
+            <h3>内皮細胞の傷害 ＝ 血管（腎臓・脳）</h3>
+            <p>HUS・脳症の原因。</p>
+          </div>
+        </div>
+
+        <h3>内皮傷害の連鎖</h3>
+        <div class="flow">
+          <div class="step"><strong>Stxが血流へ</strong>（腸管から吸収され全身へ）</div>
+          <div class="arrow">↓</div>
+          <div class="step">
+            <strong>腎糸球体などの毛細血管内皮細胞のGb3に結合 → 内皮傷害</strong>
+          </div>
+          <div class="arrow">↓</div>
+          <div class="step">
+            <strong>微小血栓の形成</strong>（傷害部位に血小板が集まり、細い血管内に血栓ができる）
+          </div>
+          <div class="arrow">↓</div>
+          <div class="grid two">
+            <div class="step">
+              <strong>血小板の消費 → 血小板減少</strong>
+            </div>
+            <div class="step">
+              <strong>血栓で狭くなった血管を通る赤血球が破砕 → 溶血性貧血</strong>
+            </div>
+          </div>
+          <div class="arrow">↓</div>
+          <div class="step">
+            <strong>糸球体の毛細血管が詰まる → 急性腎障害（乏尿・無尿）</strong>
+          </div>
+        </div>
+        <div class="card note warn">
+          <h3>HUSの三徴</h3>
+          <p>
+            <strong>溶血性貧血</strong>・<strong>血小板減少</strong>・<strong>急性腎不全</strong>。
+            このような微小血管の血栓性病変は<strong>血栓性微小血管症（TMA）</strong>と呼ばれる。
+            脳の微小血管が傷害されると、けいれん・意識障害などの<strong>脳症</strong>を起こし、命に関わる。
+          </p>
+        </div>
+      </section>
+
+      <!-- 診断 -->
+      <section class="card" id="diagnosis">
+        <h2>診断のポイント</h2>
+        <ul>
+          <li>血便を伴う下痢では、EHECを疑って便培養・毒素検査を行う。</li>
+          <li>
+            O157はソルビトールを発酵しないため、<strong>ソルビトール・マッコンキー寒天</strong>上で無色のコロニーとなる（鑑別に利用）。
+            ただし O26 や O111 などの<strong>非O157</strong>はこの方法では見分けられない。
+          </li>
+          <li><strong>ベロ毒素の検出</strong>（EIA法）やベロ毒素遺伝子（<em>stx1</em>・<em>stx2</em>）のPCR検査が重要。</li>
+          <li>HUSの評価：血算（貧血・血小板減少・破砕赤血球）、LDH、クレアチニン・尿量など。</li>
+        </ul>
+      </section>
+
+      <!-- 治療と予防 -->
+      <section class="card" id="treatment">
+        <h2>治療と予防</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>治療</h3>
+            <ul>
+              <li><strong>対症療法が基本</strong>：十分な輸液・水分補給など。</li>
+              <li><strong>止痢薬（腸管運動抑制薬）は避ける</strong>：毒素の排出が遅れ、重症化（HUS・脳症のリスク増大）につながるおそれがある。</li>
+              <li>
+                抗菌薬の使用は医師の判断による。使用の是非には議論があり、
+                国・ガイドラインにより推奨が異なる（日本では早期のホスホマイシンを挙げる指針がある）。最新の指針で確認する。
+              </li>
+              <li>HUSでは、腎代替療法（透析）を含む集中的な支持療法が必要になることがある。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>予防</h3>
+            <ul>
+              <li>十分な加熱：中心部を<strong>75℃で1分間以上</strong>加熱すれば死滅する。</li>
+              <li>手洗いの徹底：調理前、食事前、トイレ後、オムツ交換後は石けんで十分に洗う。</li>
+              <li>調理器具の使い分け：生肉を切った包丁・まな板は、野菜や調理済み食品と分けて洗浄・消毒する。</li>
+              <li>二次感染予防：家族内・施設内での接触感染対策。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section class="card" id="summary">
+        <h2>重要ポイント（まとめ）</h2>
+        <ol>
+          <li>EHECは<strong>ベロ毒素（Stx1・Stx2）</strong>産生により出血性大腸炎・HUS・脳症を起こす。<strong>3類感染症</strong>。</li>
+          <li>Stxは<strong>AB<sub>5</sub>型</strong>。Bサブユニットが<strong>Gb3</strong>に結合し、Aサブユニットが<strong>28S rRNAの脱プリン</strong>によりタンパク質合成を止める。</li>
+          <li>リシンと作用機序が同じ。Stx1は志賀毒素とほぼ同一。<strong>Stx2は重症化と関連</strong>。</li>
+          <li>HUSの本態は<strong>内皮細胞の傷害による血栓性微小血管症</strong>（溶血性貧血・血小板減少・急性腎不全）。</li>
+          <li><strong>感染力が強い</strong>（10〜100個）。止痢薬は避け、対症療法を基本とする。</li>
+        </ol>
+      </section>
+
+      <!-- 参考資料 -->
+      <section class="card refs" id="references">
+        <h2>参考資料</h2>
+        <p class="note">
+          ※ 本ページの作成に用いた主な資料です。内容は各自で原典を確認してください。
+        </p>
+        <ol class="footnotes">
+          <li>
+            Vero毒素の RNA N-グリコシダーゼ活性に関する部位特異的変異の研究（KAKEN 研究課題 01480174）：
+            <a href="https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-01480174/" target="_blank" rel="noopener">https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-01480174/</a>
+          </li>
+          <li>
+            厚生労働省：腸管出血性大腸菌Q&amp;A：
+            <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000177609.html" target="_blank" rel="noopener">https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000177609.html</a>
+          </li>
+          <li>
+            国立健康危機管理研究機構 感染症情報提供サイト：腸管出血性大腸菌感染症：
+            <a href="https://id-info.jihs.go.jp/infectious-diseases/enterohemorrhagic-escherichia-coli-infection/detail/index.html" target="_blank" rel="noopener">https://id-info.jihs.go.jp/infectious-diseases/enterohemorrhagic-escherichia-coli-infection/detail/index.html</a>
+          </li>
+          <li>
+            東京都感染症情報センター：腸管出血性大腸菌感染症：
+            <a href="https://idsc.tmiph.metro.tokyo.lg.jp/diseases/ehec/" target="_blank" rel="noopener">https://idsc.tmiph.metro.tokyo.lg.jp/diseases/ehec/</a>
+          </li>
+          <li>
+            鹿児島大学病院 ICT：腸管出血性大腸菌（EHEC）：
+            <a href="https://www.hosp.kagoshima-u.ac.jp/ict/bacteria/EHEC.htm" target="_blank" rel="noopener">https://www.hosp.kagoshima-u.ac.jp/ict/bacteria/EHEC.htm</a>
+          </li>
+          <li>
+            日本感染症学会：腸管出血性大腸菌感染症：
+            <a href="https://www.kansensho.or.jp/ref/d47.html" target="_blank" rel="noopener">https://www.kansensho.or.jp/ref/d47.html</a>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Osaka Metropolitan University — Department of Bacteriology</p>
+      <p>このテキストは医学教育目的で作成されました。臨床診療上の最終判断には、最新の ガイドラインおよび感染症専門家との相談をお勧めします。</p>
+      <p class="ai-note" style="margin-top:12px;font-size:.85rem;line-height:1.7;text-align:left;max-width:900px;margin-left:auto;margin-right:auto;">※ 本テキストは AI（ChatGPT, Claude）を用いて作成されました。文責は AI による作成物であることを踏まえ、利用者自身が内容を確認してください。内容には誤りが含まれる可能性があります。誤りに気付いていてもあえて修正していない部分もあります。必ず自分で真偽を確認すること。医療上の判断には必ず公式の教科書・文献・専門家の指導を参照してください。二次利用・再配布は自己責任のもとで可能です。その際、本注記の保持を推奨します。</p>
+    </footer>
+  </body>
+</html>
